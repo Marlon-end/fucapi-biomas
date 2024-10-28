@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados da Poluição do Ar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+            scroll-behavior: smooth; /* Rolar suavemente até a seção */
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .sidebar-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            background-color: #4CAF50;
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 1;
+        }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: 0.9s;
+            padding-top: 60px;
+            transform: translateX(-250px);
+        }
+        .sidebar a {
+            padding: 15px 25px;
+            text-decoration: none;
+            font-size: 1rem;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+        .main-content {
+            padding: 1.5rem;
+            margin-left: 0;
+            transition: margin-left 0.9s;
+        }
+        .sidebar.active {
+            transform: translateX(0);
+        }
+        .main-content.active {
+            margin-left: 250px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dados da Poluição do Ar</h1>
+</header>
+<span class="sidebar-toggle" onclick="toggleSidebar()">☰ Menu</span>
+
+<div class="sidebar" id="sidebar">
+    <a href="inicio-biomas.html" onclick="toggleSidebar()">Início</a>
+    <a href="projetos.html" onclick="toggleSidebar()">Projetos</a>
+    <a href="solucoes.html" onclick="toggleSidebar()">Soluções</a>
+</div>
+
+<div class="main-content" id="main-content">
+    <div class="container">
+        <p>Aqui você encontrará os dados mais recentes sobre a qualidade do ar nos biomas amazônicos, analisando níveis de poluição e os principais fatores que contribuem para a degradação ambiental.</p>
+    </div>
+</div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        sidebar.classList.toggle('active');
+        mainContent.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
