@@ -1,10 +1,11 @@
-
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Início Biomas da Amazônia</title>
     <style>
+        /* Estilos básicos */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -67,10 +68,11 @@
         .carousel {
             position: relative;
             max-width: 1000px;
-            height: 164px;
+            height: 300px;
             margin: 2rem auto;
             overflow: hidden;
             border: 1px solid #ccc;
+            border-radius: 8px;
         }
         .carousel-images {
             display: flex;
@@ -79,15 +81,11 @@
         }
         .carousel-image {
             min-width: 100%;
-            height: 164px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            height: 300px;
         }
         .carousel-image img {
-            width: 1000px;
-            height: 164px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
         }
         .carousel-button {
@@ -107,11 +105,75 @@
         .carousel-button.next {
             right: 10px;
         }
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+        .carousel-indicator {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .carousel-indicator.active {
+            background-color: #4CAF50;
+        }
         figcaption {
             font-size: 0.8rem;
             color: #555;
             text-align: center;
             margin-top: 0.5rem;
+        }
+
+        /* Estilos responsivos para dispositivos móveis */
+        @media (max-width: 768px) {
+            .carousel {
+                height: 200px;
+            }
+            .carousel-image {
+                height: 200px;
+            }
+            .sidebar {
+                width: 200px;
+                padding-top: 50px;
+            }
+            .main-content.active {
+                margin-left: 200px;
+            }
+            .carousel-button {
+                font-size: 1rem;
+                padding: 0.25rem 0.75rem;
+            }
+            figcaption {
+                font-size: 0.7rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel {
+                height: 150px;
+            }
+            .carousel-image {
+                height: 150px;
+            }
+            .sidebar {
+                width: 180px;
+            }
+            .main-content.active {
+                margin-left: 180px;
+            }
+            header h1 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -142,18 +204,14 @@
             <div class="carousel-image">
                 <img src="imagens/imagem2.jpg" alt="Imagem 2 - Monitoramento Ambiental">
             </div>
-            <div class="carousel-image">
-                <img src="imagens/imagem3.jpg" alt="Imagem 3 - Preservação">
-            </div>
-            <div class="carousel-image">
-                <img src="imagens/imagem4.jpg" alt="Imagem 4 - Biodiversidade">
-            </div>
-            <div class="carousel-image">
-                <img src="imagens/imagem5.jpg" alt="Imagem 5 - Sustentabilidade">
-            </div>
+            <!-- Adicione mais imagens se necessário -->
         </div>
         <button class="carousel-button prev" onclick="prevSlide()">❮</button>
         <button class="carousel-button next" onclick="nextSlide()">❯</button>
+        <div class="carousel-indicators" id="carousel-indicators">
+            <span class="carousel-indicator" onclick="showSlide(0)"></span>
+            <span class="carousel-indicator" onclick="showSlide(1)"></span>
+        </div>
     </figure>
     <figcaption>Fig. 1 - Carrossel de imagens representando os temas de preservação e monitoramento dos biomas amazônicos.</figcaption>
 </div>
@@ -170,6 +228,7 @@
 
     function showSlide(index) {
         const slides = document.getElementById('carousel-images');
+        const indicators = document.getElementById('carousel-indicators').children;
         const totalSlides = slides.children.length;
         if (index >= totalSlides) {
             currentIndex = 0;
@@ -179,6 +238,9 @@
             currentIndex = index;
         }
         slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        Array.from(indicators).forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === currentIndex);
+        });
     }
 
     function nextSlide() {
@@ -189,8 +251,8 @@
         showSlide(currentIndex - 1);
     }
 
-    // Automatic slide change every 3 seconds
-    setInterval(nextSlide, 3000);
+    // Automatic slide change every 5 seconds
+    setInterval(nextSlide, 5000);
 </script>
 
 </body>
