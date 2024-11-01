@@ -18,6 +18,10 @@
             color: white;
             padding: 1rem;
             text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2;
         }
         .sidebar-toggle {
             position: fixed;
@@ -29,7 +33,7 @@
             background-color: #4CAF50;
             padding: 5px 10px;
             border-radius: 5px;
-            z-index: 1;
+            z-index: 3;
         }
         .sidebar {
             height: 100%;
@@ -39,9 +43,10 @@
             left: 0;
             background-color: #333;
             overflow-x: hidden;
-            transition: 0.3s;
+            transition: transform 0.3s;
             padding-top: 60px;
             transform: translateX(-250px);
+            z-index: 2;
         }
         .sidebar a {
             padding: 15px 25px;
@@ -55,8 +60,8 @@
             background-color: #575757;
         }
         .main-content {
-            padding: 1.5rem;
-            margin-left: 0;
+            padding: 2rem 1.5rem;
+            margin-top: 70px; /* Espaço para o header fixo */
             transition: margin-left 0.3s;
         }
         .sidebar.active {
