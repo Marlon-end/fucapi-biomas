@@ -72,7 +72,7 @@
         }
         .carousel {
             position: relative;
-            max-width: 500px;
+            max-width: 1000px;
             height: 300px;
             margin: 2rem auto;
             overflow: hidden;
@@ -86,7 +86,7 @@
         }
         .carousel-image {
             min-width: 100%;
-            height: 150px;
+            height: 300px;
         }
         .carousel-image img {
             width: 100%;
