@@ -86,7 +86,7 @@
         }
         .carousel-image {
             min-width: 100%;
-            height: 300px;
+            height: 150px;
         }
         .carousel-image img {
             width: 100%;
