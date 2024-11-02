@@ -72,7 +72,7 @@
         }
         .carousel {
             position: relative;
-            max-width: 1000px;
+            max-width: 500px;
             height: 300px;
             margin: 2rem auto;
             overflow: hidden;
