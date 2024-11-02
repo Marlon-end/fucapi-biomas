@@ -76,6 +76,8 @@
         .image-container img {
             border: 1px solid #ddd;
             border-radius: 8px;
+            width: 100%; /* Ajusta a largura da imagem para 100% do contêiner */
+            height: auto; /* Mantém a proporção da imagem */
         }
         .image-description {
             font-size: 0.9rem;
@@ -91,12 +93,24 @@
         }
         .schematic-container {
             display: flex;
+            flex-direction: column; /* Muda para coluna para telas menores */
             align-items: center;
             gap: 1rem;
             margin-top: 2rem;
         }
         .schematic-image {
-            width: 150%;
+            width: 100%; /* Ajusta a largura da imagem para 100% do contêiner */
+            height: auto; /* Mantém a proporção da imagem */
+        }
+
+        /* Media Queries para dispositivos móveis */
+        @media (min-width: 768px) {
+            .schematic-container {
+                flex-direction: row; /* Muda de coluna para linha em telas maiores */
+            }
+            .schematic-image {
+                width: 50%; /* Ajusta a largura da imagem do esquemático */
+            }
         }
     </style>
 </head>
