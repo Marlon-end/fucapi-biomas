@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             background-color: #f3f3f3;
-            scroll-behavior: smooth; /* Rolar suavemente até a seção */
+            scroll-behavior: smooth;
         }
         header {
             background-color: #4CAF50;
@@ -69,6 +69,22 @@
             margin: 2rem auto;
             padding: 1rem;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th, td {
+            padding: 8px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -87,6 +103,53 @@
 <div class="main-content" id="main-content">
     <div class="container">
         <p>Aqui você encontrará os dados mais recentes sobre a qualidade do ar nos biomas amazônicos, analisando níveis de poluição e os principais fatores que contribuem para a degradação ambiental.</p>
+        
+        <!-- Tabela de Qualidade do Ar -->
+        <h2>Qualidade do Ar em Manaus</h2>
+        <table>
+            <tr>
+                <th>Bairro</th>
+                <th>Índice de Qualidade do Ar (IQA)</th>
+                <th>Nível de Poluição</th>
+                <th>Data da Medição</th>
+            </tr>
+            <tr>
+                <td>Centro</td>
+                <td>45</td>
+                <td>Bom</td>
+                <td>27/10/2024</td>
+            </tr>
+            <tr>
+                <td>Adrianópolis</td>
+                <td>70</td>
+                <td>Moderado</td>
+                <td>27/10/2024</td>
+            </tr>
+            <tr>
+                <td>Chapada</td>
+                <td>90</td>
+                <td>Insalubre para Grupos Sensíveis</td>
+                <td>27/10/2024</td>
+            </tr>
+            <tr>
+                <td>Alvorada</td>
+                <td>120</td>
+                <td>Insalubre</td>
+                <td>27/10/2024</td>
+            </tr>
+            <tr>
+                <td>Japiim</td>
+                <td>150</td>
+                <td>Insalubre</td>
+                <td>27/10/2024</td>
+            </tr>
+            <tr>
+                <td>Cidade Nova</td>
+                <td>200</td>
+                <td>Perigoso</td>
+                <td>27/10/2024</td>
+            </tr>
+        </table>
     </div>
 </div>
 
