@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             background-color: #f3f3f3;
-            scroll-behavior: smooth; /* Rolar suavemente até a seção */
+            scroll-behavior: smooth;
         }
         header {
             background-color: #4CAF50;
@@ -69,6 +69,35 @@
             margin: 2rem auto;
             padding: 1rem;
         }
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .image-container img {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .image-description {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 0.5rem;
+        }
+        .circuit-content {
+            text-align: left;
+            margin: 1rem 0;
+        }
+        .circuit-image {
+            width: 60%;
+        }
+        .schematic-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .schematic-image {
+            width: 150%;
+        }
     </style>
 </head>
 <body>
@@ -88,6 +117,30 @@
     <div class="container">
         <p>Este projeto visa monitorar a poluição do ar nos biomas amazônicos, utilizando sensores e tecnologia de rede para captar e analisar dados em tempo real.</p>
         <p>Entre os objetivos estão a medição de partículas no ar, gases nocivos e outros indicadores ambientais para um acompanhamento contínuo.</p>
+        
+        <!-- Conteúdo acima da Imagem do Circuito -->
+        <div class="circuit-content">
+            <h2>Detalhes do Circuito de Monitoramento</h2>
+            <p>O circuito do projeto foi desenvolvido para captar e processar dados em tempo real. Abaixo, é apresentada a imagem do circuito completo, com todos os componentes eletrônicos utilizados no projeto.</p>
+        </div>
+        
+        <!-- Imagem do Circuito com conteúdo abaixo -->
+        <div class="image-container">
+            <img src="imagens/circuito.jpg" alt="Imagem do Circuito" class="circuit-image">
+            <div class="image-description">Figura 1 - Circuito do sistema de monitoramento.</div>
+        </div>
+        
+        <!-- Conteúdo abaixo da Imagem do Circuito -->
+        <div class="circuit-content">
+            <p>Este circuito é responsável pela coleta de dados e pela transmissão das informações para o sistema central. Ele utiliza sensores específicos para medir a qualidade do ar e outros parâmetros ambientais nos biomas amazônicos.</p>
+        </div>
+
+        <!-- Imagem e descrição do Esquemático -->
+        <div class="schematic-container">
+            <img src="imagens/esquematico.jpg" alt="Esquemático do Projeto" class="schematic-image">
+            <div class="image-description">Figura 2 - Esquemático do circuito com detalhamento dos componentes.</div>
+            <p>O esquemático detalha cada componente e sua função no sistema, permitindo uma visualização completa do fluxo de dados e do funcionamento do circuito.</p>
+        </div>
     </div>
 </div>
 
