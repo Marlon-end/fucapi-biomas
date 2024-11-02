@@ -17,6 +17,9 @@
             color: white;
             padding: 1rem;
             text-align: center;
+            position: fixed; /* Mantém o cabeçalho fixo */
+            width: 100%; /* Garante que o cabeçalho ocupe toda a largura */
+            z-index: 2; /* Coloca o cabeçalho acima de outros elementos */
         }
         .sidebar-toggle {
             position: fixed;
@@ -28,18 +31,18 @@
             background-color: #4CAF50;
             padding: 5px 10px;
             border-radius: 5px;
-            z-index: 1;
+            z-index: 3; /* Mantém o botão do menu acima do cabeçalho */
         }
         .sidebar {
             height: 100%;
             width: 250px;
             position: fixed;
-            top: 0;
+            top: 60px; /* Ajusta a posição do menu abaixo do cabeçalho */
             left: 0;
             background-color: #333;
             overflow-x: hidden;
             transition: 0.3s;
-            padding-top: 60px;
+            padding-top: 20px; /* Adiciona um pouco de espaço acima do menu */
             transform: translateX(-250px);
         }
         .sidebar a {
@@ -57,6 +60,7 @@
             padding: 1.5rem;
             margin-left: 0;
             transition: margin-left 0.3s;
+            margin-top: 70px; /* Adiciona margem no topo para o conteúdo não ficar atrás do cabeçalho */
         }
         .sidebar.active {
             transform: translateX(0);
