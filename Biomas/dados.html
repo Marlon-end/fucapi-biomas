@@ -85,6 +85,30 @@
             background-color: #4CAF50;
             color: white;
         }
+
+        /* Media Queries para Responsividade */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px; /* Largura da sidebar em dispositivos menores */
+            }
+            .sidebar-toggle {
+                font-size: 1.2rem; /* Ajusta o tamanho do botão */
+            }
+            .container {
+                margin: 1rem; /* Menos margem em telas menores */
+                padding: 0.5rem; /* Menos padding em telas menores */
+            }
+            th, td {
+                padding: 4px; /* Menos padding nas células da tabela */
+                font-size: 0.9rem; /* Tamanho da fonte menor em telas menores */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            th, td {
+                font-size: 0.8rem; /* Tamanho da fonte ainda menor para telas pequenas */
+            }
+        }
     </style>
 </head>
 <body>
