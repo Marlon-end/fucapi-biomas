@@ -16,22 +16,22 @@
             background-color: #4CAF50;
             color: white;
             padding: 1rem;
-            display: flex; /* Alinha o título e o botão em linha */
-            justify-content: center; /* Centraliza o conteúdo do cabeçalho */
-            align-items: center; /* Alinha verticalmente */
+            text-align: center;
+            position: fixed; /* Mantém o cabeçalho fixo */
             width: 100%; /* Garante que o cabeçalho ocupe toda a largura */
             z-index: 2; /* Coloca o cabeçalho acima de outros elementos */
         }
-        h1 {
-            margin: 0; /* Remove margem padrão do título */
-        }
         .sidebar-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
             font-size: 1.5rem;
             cursor: pointer;
             color: white;
-            background-color: transparent;
-            border: none; /* Remove a borda */
-            padding: 0; /* Remove preenchimento para aproximar do cabeçalho */
+            background-color: #4CAF50;
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 3; /* Mantém o botão do menu acima do cabeçalho */
         }
         .sidebar {
             height: 100%;
@@ -61,7 +61,6 @@
             margin-left: 0;
             transition: margin-left 0.3s;
             margin-top: 70px; /* Adiciona margem no topo para o conteúdo não ficar atrás do cabeçalho */
-            margin-left: 250px; /* Deixa espaço para o menu fixo na esquerda */
         }
         .sidebar.active {
             transform: translateX(0);
@@ -123,8 +122,8 @@
 
 <header>
     <h1>Projetos de Monitoramento</h1>
-    <span class="sidebar-toggle" onclick="toggleSidebar()">☰ Menu</span>
 </header>
+<span class="sidebar-toggle" onclick="toggleSidebar()">☰ Menu</span>
 
 <div class="sidebar" id="sidebar">
     <a href="inicio-biomas.html" onclick="toggleSidebar()">Início</a>
