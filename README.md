@@ -149,7 +149,7 @@
     <figure class="video-container">
         <video controls>
             <source src="videos/seu_video.mp4" type="video/mp4">
-            Seu navegador não suporta a tag de vídeo.
+        
         </video>
     </figure>
     <figcaption>Fig. 1 - Vídeo representando os temas de preservação e monitoramento dos biomas amazônicos.</figcaption>
