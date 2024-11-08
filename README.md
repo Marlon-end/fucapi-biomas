@@ -25,7 +25,7 @@
         }
         .sidebar-toggle {
             position: fixed;
-            top: 20px;
+            top: 15px;
             left: 20px;
             font-size: 1.5rem;
             cursor: pointer;
@@ -61,7 +61,7 @@
         }
         .main-content {
             padding: 2rem 1.5rem;
-            margin-top: 70px; /* Espaço para o header fixo */
+            margin-top: 60px; /* Espaço ajustado para o header fixo */
             transition: margin-left 0.3s;
         }
         .sidebar.active {
@@ -120,6 +120,9 @@
             }
             header h1 {
                 font-size: 1.2rem;
+            }
+            .sidebar-toggle {
+                top: 10px; /* Ajuste de posição para dispositivos menores */
             }
         }
     </style>
