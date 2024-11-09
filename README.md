@@ -91,6 +91,22 @@
             margin-top: 0.5rem;
         }
 
+        /* Estilos para a linha do tempo */
+        .timeline {
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+        }
+        .timeline input[type="range"] {
+            width: 100%;
+        }
+        .timeline-display {
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 1rem;
+            min-height: 2em;
+        }
+
         /* Estilos responsivos para dispositivos móveis */
         @media (max-width: 768px) {
             .video-container {
@@ -149,10 +165,16 @@
     <figure class="video-container">
         <video controls>
             <source src="videos/seu_video.mp4" type="video/mp4">
-        
         </video>
     </figure>
     <figcaption>Fig. 1 - Vídeo representando os temas de preservação e monitoramento dos biomas amazônicos.</figcaption>
+
+    <!-- Seção de Linha do Tempo -->
+    <div class="timeline">
+        <h3>Linha do Tempo da Degradação Amazônica</h3>
+        <input type="range" id="timelineSlider" min="2000" max="2024" value="2000" oninput="updateTimeline()">
+        <div class="timeline-display" id="timelineDisplay">Ano: 2000 - Início da linha do tempo</div>
+    </div>
 </div>
 
 <script>
@@ -161,6 +183,25 @@
         const mainContent = document.getElementById('main-content');
         sidebar.classList.toggle('active');
         mainContent.classList.toggle('active');
+    }
+
+    function updateTimeline() {
+        const slider = document.getElementById('timelineSlider');
+        const display = document.getElementById('timelineDisplay');
+        const year = slider.value;
+
+        // Mensagens baseadas no ano selecionado
+        const messages = {
+            "2000": "Ano: 2000 - Início da linha do tempo.",
+            "2005": "Ano: 2005 - Aumento da área desmatada devido a expansão agropecuária.",
+            "2010": "Ano: 2010 - Implementação de políticas para preservação, mas degradação continua.",
+            "2015": "Ano: 2015 - Desmatamento ilegal ainda em alta.",
+            "2020": "Ano: 2020 - Intensificação de queimadas e desmatamento.",
+            "2024": "Ano: 2024 - Medidas de recuperação ambiental em andamento."
+        };
+
+        // Atualizar a exibição com base no valor do slider
+        display.textContent = messages[year] || `Ano: ${year} - Dados não disponíveis para esse ano.`;
     }
 </script>
 
