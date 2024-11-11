@@ -23,18 +23,106 @@
             top: 0;
             z-index: 2;
         }
-        .sidebar-toggle {
-            position: fixed;
-            top: 15px;
-            left: 20px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
+
+        /* Barra de menu centralizada */
+        .menu-bar {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
             background-color: #4CAF50;
-            padding: 5px 10px;
-            border-radius: 5px;
-            z-index: 3;
         }
+
+        .menu-bar a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .menu-bar a:hover {
+            background-color: #575757;
+        }
+
+        /* Título com imagem de fundo */
+        .title-section {
+            position: relative;
+            text-align: center;
+            background-image: url('imagens/feira.jpg'); /* Caminho da imagem */
+            background-size: cover;
+            background-position: center;
+            padding: 200px 0;
+            color: rgb(255, 255, 255);
+        }
+
+        /* Sobreposição de cor para ofuscar a imagem */
+        .title-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .title-section h2, .title-section p, .title-section .subtitle {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Estilos da linha do tempo */
+        .timeline {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .timeline h3 {
+            margin-bottom: 1rem;
+        }
+
+        .timeline-slider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .timeline-slider input[type="range"] {
+            width: 70%;
+            cursor: pointer;
+        }
+
+        .timeline-bar {
+            height: 5px;
+            background: linear-gradient(to right, #ff7f50, #ff4500);
+            border-radius: 10px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        /* Área de detalhes da imagem */
+        .image-display {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .image-display img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
         .sidebar {
             height: 100%;
             width: 250px;
@@ -48,6 +136,7 @@
             transform: translateX(-250px);
             z-index: 2;
         }
+
         .sidebar a {
             padding: 15px 25px;
             text-decoration: none;
@@ -56,61 +145,34 @@
             display: block;
             transition: 0.3s;
         }
+
         .sidebar a:hover {
             background-color: #575757;
         }
+
         .main-content {
             padding: 2rem 1.5rem;
-            margin-top: 60px; /* Espaço ajustado para o header fixo */
+            margin-top: 60px;
             transition: margin-left 0.3s;
         }
+
         .sidebar.active {
             transform: translateX(0);
         }
+
         .main-content.active {
             margin-left: 250px;
         }
-        .video-container {
-            position: relative;
-            max-width: 1000px;
-            height: 300px;
-            margin: 2rem auto;
-            overflow: hidden;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        figcaption {
-            font-size: 0.8rem;
-            color: #555;
-            text-align: center;
-            margin-top: 0.5rem;
-        }
 
-        /* Estilos para a linha do tempo */
-        .timeline {
-            margin: 2rem auto;
-            max-width: 600px;
-            text-align: center;
-        }
-        .timeline input[type="range"] {
-            width: 100%;
-        }
-        .timeline-display {
-            font-size: 1.2rem;
-            color: #333;
-            margin-top: 1rem;
-            min-height: 2em;
-        }
-
-        /* Estilos responsivos para dispositivos móveis */
+        /* Estilos responsivos */
         @media (max-width: 768px) {
-            .video-container {
-                height: 200px;
+            .menu-bar {
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 0;
             }
             .sidebar {
                 width: 200px;
@@ -119,36 +181,32 @@
             .main-content.active {
                 margin-left: 200px;
             }
-            figcaption {
-                font-size: 0.7rem;
-            }
         }
-        
-        @media (max-width: 480px) {
-            .video-container {
-                height: 150px;
-            }
-            .sidebar {
-                width: 180px;
-            }
-            .main-content.active {
-                margin-left: 180px;
-            }
-            header h1 {
-                font-size: 1.2rem;
-            }
-            .sidebar-toggle {
-                top: 10px; /* Ajuste de posição para dispositivos menores */
-            }
+
+        /* Diminui o tamanho do ícone de fogo */
+        #fireIcon {
+            width: 30px;
+            height: auto;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Início Biomas da Amazônia</h1>
+    <!-- Botão para abrir o menu -->
+    <span class="menu-toggle" onclick="toggleMenu()">☰ Menu</span>
+    <div class="menu-bar" id="menu-bar">
+        <a href="Biomas/projetos.html">Projetos</a>
+        <a href="Biomas/dados.html">Dados da Poluição do Ar</a>
+        <a href="Biomas/solucoes.html">Soluções</a>
+    </div>
 </header>
-<span class="sidebar-toggle" onclick="toggleSidebar()">☰ Menu</span>
+
+<section class="title-section">
+    <h2>Feira Tecnológica - FUCAPI</h2>
+    <p>Manaus, Brasil</p>
+    <p class="subtitle">Ecomonitor - NBE1</p>
+</section>
 
 <div class="sidebar" id="sidebar">
     <a href="Biomas/projetos.html" onclick="toggleSidebar()">Projetos</a>
@@ -169,41 +227,53 @@
     </figure>
     <figcaption>Fig. 1 - Vídeo representando os temas de preservação e monitoramento dos biomas amazônicos.</figcaption>
 
-    <!-- Seção de Linha do Tempo -->
+    <!-- Linha do Tempo -->
     <div class="timeline">
         <h3>Linha do Tempo da Degradação Amazônica</h3>
-        <input type="range" id="timelineSlider" min="2000" max="2024" value="2000" oninput="updateTimeline()">
-        <div class="timeline-display" id="timelineDisplay">Ano: 2000 - Início da linha do tempo</div>
+        <div class="timeline-slider">
+            <img src="imagens/fogo.png" alt="Fogo" id="fireIcon">
+            <input type="range" id="timelineSlider" min="2000" max="2024" value="2000" oninput="updateTimeline()">
+            <div class="timeline-bar" id="timelineBar"></div>
+        </div>
+        <div id="timelineDisplay">Ano: 2000 - Início da linha do tempo</div>
+    </div>
+
+    <div class="image-display">
+        <img src="imagens/imagem2000.jpg" alt="Imagem da Amazônia" id="timelineImage" onclick="showDetails()">
+        <div class="image-details" id="imageDetails"></div>
     </div>
 </div>
 
 <script>
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('main-content');
-        sidebar.classList.toggle('active');
-        mainContent.classList.toggle('active');
-    }
+    const images = {
+        "2000": { src: "imagens/evento1.jpg", details: "Ano 2000 - Início do desmatamento intensivo." },
+        "2005": { src: "imagens/evento2.jpg", details: "Ano 2005 - Expansão agropecuária aumenta a área desmatada." },
+        "2010": { src: "imagens/evento3.jpg", details: "Ano 2010 - Políticas de preservação são implementadas, mas o desmatamento persiste." },
+        "2015": { src: "imagens/evento4.jpg", details: "Ano 2015 - Queimadas e desmatamento ilegal continuam." },
+        "2020": { src: "imagens/evento5.jpg", details: "Ano 2020 - Queimadas intensificadas devido à falta de fiscalização." },
+        "2024": { src: "imagens/evento6.jpg", details: "Ano 2024 - Medidas de controle são introduzidas, mas o impacto é lento." }
+    };
 
     function updateTimeline() {
         const slider = document.getElementById('timelineSlider');
-        const display = document.getElementById('timelineDisplay');
         const year = slider.value;
+        document.getElementById('timelineDisplay').textContent = `Ano: ${year} - ${images[year].details}`;
+        document.getElementById('timelineImage').src = images[year].src;
 
-        // Mensagens baseadas no ano selecionado
-        const messages = {
-            "2000": "Ano: 2000 - Início da linha do tempo.",
-            "2005": "Ano: 2005 - Aumento da área desmatada devido a expansão agropecuária.",
-            "2010": "Ano: 2010 - Implementação de políticas para preservação, mas degradação continua.",
-            "2015": "Ano: 2015 - Desmatamento ilegal ainda em alta.",
-            "2020": "Ano: 2020 - Intensificação de queimadas e desmatamento.",
-            "2024": "Ano: 2024 - Medidas de recuperação ambiental em andamento."
-        };
+        // Atualiza a largura da barra da linha do tempo
+        const percentage = ((year - 2000) / (2024 - 2000)) * 100;
+        document.getElementById('timelineBar').style.width = percentage + '%';
+    }
 
-        // Atualizar a exibição com base no valor do slider
-        display.textContent = messages[year] || `Ano: ${year} - Dados não disponíveis para esse ano.`;
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('main-content').classList.toggle('active');
+    }
+
+    function toggleMenu() {
+        const menuBar = document.getElementById('menu-bar');
+        menuBar.style.display = menuBar.style.display === 'flex' ? 'none' : 'flex';
     }
 </script>
-
 </body>
 </html>
