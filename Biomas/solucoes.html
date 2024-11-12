@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metas e Objetivos</title>
+    <title>Soluções para a Amazônia</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f3f3f3;
-            scroll-behavior: smooth; /* Rolar suavemente até a seção */
+            color: #333;
+            line-height: 1.6;
         }
         header {
             background-color: #4CAF50;
@@ -37,10 +38,10 @@
             top: 0;
             left: 0;
             background-color: #333;
-            overflow-x: hidden;
-            transition: 0.3s;
+            overflow-y: auto;
             padding-top: 60px;
             transform: translateX(-250px);
+            transition: transform 0.3s ease;
         }
         .sidebar a {
             padding: 15px 25px;
@@ -48,14 +49,12 @@
             font-size: 1rem;
             color: white;
             display: block;
-            transition: 0.3s;
         }
         .sidebar a:hover {
             background-color: #575757;
         }
         .main-content {
             padding: 1.5rem;
-            margin-left: 0;
             transition: margin-left 0.3s;
         }
         .sidebar.active {
@@ -67,14 +66,30 @@
         .container {
             max-width: 800px;
             margin: 2rem auto;
-            padding: 1rem;
+        }
+        h2 {
+            color: #0ac432;
+            margin-top: 1rem;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .sidebar-toggle {
+                left: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Metas e Objetivos</h1>
+    <h1>Soluções para a Preservação da Amazônia</h1>
 </header>
 <span class="sidebar-toggle" onclick="toggleSidebar()">☰ Menu</span>
 
@@ -82,21 +97,57 @@
     <a href="inicio-biomas.html" onclick="toggleSidebar()">Início</a>
     <a href="projetos.html" onclick="toggleSidebar()">Projetos</a>
     <a href="dados.html" onclick="toggleSidebar()">Dados da Poluição do Ar</a>
+    <a href="#solucoes" onclick="toggleSidebar()">Soluções</a>
 </div>
 
 <div class="main-content" id="main-content">
     <div class="container">
-        <p>Abaixo estão algumas abordagens para mitigar os impactos da poluição do ar na Amazônia, incluindo o uso de tecnologias de filtragem e estratégias para reduzir as emissões industriais e urbanas.</p>
-        <p>Exploramos políticas ambientais e soluções inovadoras que podem ajudar na preservação do ecossistema amazônico.</p>
+        <section id="solucoes">
+            <h2>Objetivo</h2>
+            <p>O projeto visa monitorar e preservar a biodiversidade da Amazônia, promovendo a conservação da floresta...</p>
+
+            <h2>Soluções</h2>
+            <p>Abaixo estão algumas ações locais importantes para a preservação da Amazônia:</p>
+            <ul>
+                <li><strong>Fortalecer as comunidades locais:</strong> Apoiar iniciativas lideradas por comunidades indígenas e ribeirinhas...</li>
+                <li><strong>Desenvolvimento de cooperativas sustentáveis:</strong> Cooperativas de pequenos agricultores e extrativistas...</li>
+                <li><strong>Educação ambiental nas escolas locais:</strong> Incorporar programas de educação ambiental...</li>
+                <li><strong>Reflorestamento e recuperação de áreas degradadas:</strong> Incentivar moradores a participar do plantio...</li>
+                <li><strong>Incentivo ao ecoturismo:</strong> Ecoturismo de pequeno porte cria empregos e valoriza a floresta...</li>
+                <li><strong>Monitoramento local do desmatamento:</strong> Envolver comunidades em projetos de monitoramento...</li>
+                <li><strong>Fomento ao uso sustentável da biodiversidade:</strong> Apoiar projetos que incentivem o uso de recursos florestais...</li>
+                <li><strong>Promover alternativas econômicas:</strong> Oferecer formação para práticas sustentáveis como a produção de mel...</li>
+            </ul>
+
+            <h2>Agricultura de Conservação (CA)</h2>
+            <p>A CA visa equilibrar a preservação ambiental com a produtividade agrícola, com práticas como cobertura do solo...</p>
+
+            <h2>Incentivo: Crédito de Carbono</h2>
+            <p>O crédito de carbono é um mecanismo que representa a redução de CO2e da atmosfera, usado para compensar emissões...</p>
+            
+            <h2>Vantagens e Desvantagens</h2>
+            <table>
+                <tr>
+                    <th>Vantagens</th>
+                    <th>Desvantagens</th>
+                </tr>
+                <tr>
+                    <td>Representa a não emissão de carbono...</td>
+                    <td>É visto por alguns como uma licença para poluir...</td>
+                </tr>
+                <tr>
+                    <td>Auxilia países que não conseguem reduzir suas emissões...</td>
+                    <td>A supervalorização pode prejudicar países em desenvolvimento...</td>
+                </tr>
+            </table>
+        </section>
     </div>
 </div>
 
 <script>
     function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const mainContent = document.getElementById('main-content');
-        sidebar.classList.toggle('active');
-        mainContent.classList.toggle('active');
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('main-content').classList.toggle('active');
     }
 </script>
 
