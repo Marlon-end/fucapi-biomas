@@ -245,7 +245,7 @@
         <h3>Linha do Tempo da Degradação Amazônica</h3>
         <div class="timeline-slider">
             <img src="imagens/fogo.png" alt="Fogo" id="fireIcon">
-            <input type="range" id="timelineSlider" min="2000" max="2024" value="2000" oninput="updateTimeline()">
+            <input type="range" id="timelineSlider" min="1" max="6" value="1" oninput="updateTimeline()">
             <div class="timeline-bar" id="timelineBar"></div>
         </div>
         <div id="timelineDisplay">Ano: 2000 - Início da linha do tempo</div>
@@ -262,35 +262,29 @@
         const menu = document.getElementById('menu-bar');
         menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
-    
     function toggleSidebar() {
         document.getElementById("sidebar").classList.toggle("active");
         document.getElementById("main-content").classList.toggle("active");
     }
 
     function updateTimeline() {
-        const year = document.getElementById("timelineSlider").value;
+        const sliderValue = document.getElementById("timelineSlider").value;
         const timelineDisplay = document.getElementById("timelineDisplay");
         const timelineImage = document.getElementById("timelineImage");
 
-        const images = {
-            "2000": "imagens/evento1.jpg",
-            "2005": "imagens/evento2.jpg",
-            "2010": "imagens/evento3.jpg",
-            "2015": "imagens/evento4.jpg",
-            "2020": "imagens/evento5.jpg",
-            "2024": "imagens/evento6.jpg"
+        const events = {
+            "1": { year: "2000", image: "imagens/evento1.jpg" },
+            "2": { year: "2005", image: "imagens/evento2.jpg" },
+            "3": { year: "2010", image: "imagens/evento3.jpg" },
+            "4": { year: "2015", image: "imagens/evento4.jpg" },
+            "5": { year: "2020", image: "imagens/evento5.jpg" },
+            "6": { year: "2024", image: "imagens/evento6.jpg" }
         };
 
-        timelineDisplay.innerText = `Ano: ${year}`;
-        timelineImage.src = images[year];
-    }
-
-    function showDetails() {
-        const imageDetails = document.getElementById("imageDetails");
-        imageDetails.innerText = "Detalhes da imagem: este evento representa o impacto do desmatamento e queimadas na Amazônia.";
+        const currentEvent = events[sliderValue];
+        timelineDisplay.innerText = `Ano: ${currentEvent.year}`;
+        timelineImage.src = currentEvent.image;
     }
 </script>
-
 </body>
 </html>
