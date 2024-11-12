@@ -63,7 +63,6 @@
             color: rgb(255, 255, 255);
         }
 
-        /* Sobreposição de cor para ofuscar a imagem */
         .title-section::before {
             content: "";
             position: absolute;
@@ -164,7 +163,7 @@
             margin-left: 250px;
         }
 
-        /* Estilos responsivos */
+        /* Responsividade */
         @media (max-width: 768px) {
             .menu-bar {
                 width: 100%;
@@ -181,6 +180,19 @@
             .main-content.active {
                 margin-left: 200px;
             }
+            .video-container {
+                width: 100%;
+                padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+                position: relative;
+                height: 0;
+            }
+            .video-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
         }
 
         /* Diminui o tamanho do ícone de fogo */
@@ -193,7 +205,6 @@
 <body>
 
 <header>
-    <!-- Botão para abrir o menu -->
     <span class="menu-toggle" onclick="toggleMenu()">☰ Menu</span>
     <div class="menu-bar" id="menu-bar">
         <a href="Biomas/projetos.html">Projetos</a>
@@ -217,19 +228,12 @@
 <div class="main-content" id="main-content">
     <section id="introducao">
         <h2>Bem-vindo ao site Biomas da Amazônia</h2>
-        <p>Recentemente secas históricas acontecem com mais frequência, nos últimos
-            anos, as principais hidrovias da amazônia secam muito além dos previsto, pesquisas
-            apontam, o desmatamento, a agropecuária e a poluição do ar como principais
-            causadores destes fenômenos climáticos, O reflorestamento surge como uma ação necessária para garantir a
-            conservação da biodiversidade e equilibrar as mudanças climáticas. No entanto, ainda
-            se faz necessários que outras atividades como o monitoramento, prevenção, incentivo
-            e desenvolvimento de atividade que desenvolvam a bioeconomia, sejam criados e que
-            principalmente trabalhem em conjunto, para recuperar uma área devastada, sem fazer
-            com que se torne improdutiva, em casos como o da agropecuária.</p>
+        <p>Recentemente secas históricas acontecem com mais frequência, nos últimos anos, as principais hidrovias da amazônia secam muito além dos previsto, pesquisas apontam, o desmatamento, a agropecuária e a poluição do ar como principais causadores destes fenômenos climáticos, O reflorestamento surge como uma ação necessária para garantir a conservação da biodiversidade e equilibrar as mudanças climáticas. No entanto, ainda se faz necessários que outras atividades como o monitoramento, prevenção, incentivo e desenvolvimento de atividade que desenvolvam a bioeconomia, sejam criados e que principalmente trabalhem em conjunto, para recuperar uma área devastada, sem fazer com que se torne improdutiva, em casos como o da agropecuária.</p>
     </section>
 
+    <!-- Vídeo Responsivo -->
     <figure class="video-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4MJvepYiBVk" 
+        <iframe src="https://www.youtube.com/embed/4MJvepYiBVk" 
                 title="YouTube video player" frameborder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowfullscreen></iframe>
@@ -254,31 +258,10 @@
 </div>
 
 <script>
-    const images = {
-        "2000": { src: "imagens/evento1.jpg", details: "Ano 2000 - Início do desmatamento intensivo." },
-        "2005": { src: "imagens/evento2.jpg", details: "Ano 2005 - Expansão agropecuária aumenta a área desmatada." },
-        "2010": { src: "imagens/evento3.jpg", details: "Ano 2010 - Políticas de preservação são implementadas, mas o desmatamento persiste." },
-        "2015": { src: "imagens/evento4.jpg", details: "Ano 2015 - Queimadas históricas impactam a região." },
-        "2020": { src: "imagens/evento5.jpg", details: "Ano 2020 - Mudanças climáticas agravam a situação da floresta." },
-        "2024": { src: "imagens/evento6.jpg", details: "Ano 2024 - Criação de novas políticas ambientais." }
-    };
-
     function toggleMenu() {
         const menu = document.getElementById('menu-bar');
         menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
-
-    function updateTimeline() {
-        const year = document.getElementById('timelineSlider').value;
-        const display = document.getElementById('timelineDisplay');
-        const image = document.getElementById('timelineImage');
-        const details = document.getElementById('imageDetails');
-        
-        display.textContent = `Ano: ${year} - ${images[year].details}`;
-        image.src = images[year].src;
-        details.textContent = images[year].details;
-    }
-
     function toggleSidebar() {
         document.getElementById("sidebar").classList.toggle("active");
         document.getElementById("main-content").classList.toggle("active");
