@@ -252,7 +252,7 @@
     </div>
 
     <div class="image-display">
-        <img src="imagens/imagem2000.jpg" alt="Imagem da Amazônia" id="timelineImage" onclick="showDetails()">
+        <img src="imagens/evento1.jpg" alt="Imagem da Amazônia" id="timelineImage" onclick="showDetails()">
         <div class="image-details" id="imageDetails"></div>
     </div>
 </div>
@@ -262,10 +262,35 @@
         const menu = document.getElementById('menu-bar');
         menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
     }
+    
     function toggleSidebar() {
         document.getElementById("sidebar").classList.toggle("active");
         document.getElementById("main-content").classList.toggle("active");
     }
+
+    function updateTimeline() {
+        const year = document.getElementById("timelineSlider").value;
+        const timelineDisplay = document.getElementById("timelineDisplay");
+        const timelineImage = document.getElementById("timelineImage");
+
+        const images = {
+            "2000": "imagens/evento1.jpg",
+            "2005": "imagens/evento2.jpg",
+            "2010": "imagens/evento3.jpg",
+            "2015": "imagens/evento4.jpg",
+            "2020": "imagens/evento5.jpg",
+            "2024": "imagens/evento6.jpg"
+        };
+
+        timelineDisplay.innerText = `Ano: ${year}`;
+        timelineImage.src = images[year];
+    }
+
+    function showDetails() {
+        const imageDetails = document.getElementById("imageDetails");
+        imageDetails.innerText = "Detalhes da imagem: este evento representa o impacto do desmatamento e queimadas na Amazônia.";
+    }
 </script>
+
 </body>
 </html>
