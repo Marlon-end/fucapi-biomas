@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -217,13 +217,22 @@
 <div class="main-content" id="main-content">
     <section id="introducao">
         <h2>Bem-vindo ao site Biomas da Amazônia</h2>
-        <p>Aqui você encontrará informações sobre os projetos de monitoramento de poluição do ar e as soluções para combater o impacto ambiental.</p>
+        <p>Recentemente secas históricas acontecem com mais frequência, nos últimos
+            anos, as principais hidrovias da amazônia secam muito além dos previsto, pesquisas
+            apontam, o desmatamento, a agropecuária e a poluição do ar como principais
+            causadores destes fenômenos climáticos, O reflorestamento surge como uma ação necessária para garantir a
+            conservação da biodiversidade e equilibrar as mudanças climáticas. No entanto, ainda
+            se faz necessários que outras atividades como o monitoramento, prevenção, incentivo
+            e desenvolvimento de atividade que desenvolvam a bioeconomia, sejam criados e que
+            principalmente trabalhem em conjunto, para recuperar uma área devastada, sem fazer
+            com que se torne improdutiva, em casos como o da agropecuária.</p>
     </section>
 
     <figure class="video-container">
-        <video controls>
-            <source src="videos/seu_video.mp4" type="video/mp4">
-        </video>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/4MJvepYiBVk" 
+                title="YouTube video player" frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen></iframe>
     </figure>
     <figcaption>Fig. 1 - Vídeo representando os temas de preservação e monitoramento dos biomas amazônicos.</figcaption>
 
@@ -249,30 +258,30 @@
         "2000": { src: "imagens/evento1.jpg", details: "Ano 2000 - Início do desmatamento intensivo." },
         "2005": { src: "imagens/evento2.jpg", details: "Ano 2005 - Expansão agropecuária aumenta a área desmatada." },
         "2010": { src: "imagens/evento3.jpg", details: "Ano 2010 - Políticas de preservação são implementadas, mas o desmatamento persiste." },
-        "2015": { src: "imagens/evento4.jpg", details: "Ano 2015 - Queimadas e desmatamento ilegal continuam." },
-        "2020": { src: "imagens/evento5.jpg", details: "Ano 2020 - Queimadas intensificadas devido à falta de fiscalização." },
-        "2024": { src: "imagens/evento6.jpg", details: "Ano 2024 - Medidas de controle são introduzidas, mas o impacto é lento." }
+        "2015": { src: "imagens/evento4.jpg", details: "Ano 2015 - Queimadas históricas impactam a região." },
+        "2020": { src: "imagens/evento5.jpg", details: "Ano 2020 - Mudanças climáticas agravam a situação da floresta." },
+        "2024": { src: "imagens/evento6.jpg", details: "Ano 2024 - Criação de novas políticas ambientais." }
     };
 
-    function updateTimeline() {
-        const slider = document.getElementById('timelineSlider');
-        const year = slider.value;
-        document.getElementById('timelineDisplay').textContent = `Ano: ${year} - ${images[year].details}`;
-        document.getElementById('timelineImage').src = images[year].src;
+    function toggleMenu() {
+        const menu = document.getElementById('menu-bar');
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
 
-        // Atualiza a largura da barra da linha do tempo
-        const percentage = ((year - 2000) / (2024 - 2000)) * 100;
-        document.getElementById('timelineBar').style.width = percentage + '%';
+    function updateTimeline() {
+        const year = document.getElementById('timelineSlider').value;
+        const display = document.getElementById('timelineDisplay');
+        const image = document.getElementById('timelineImage');
+        const details = document.getElementById('imageDetails');
+        
+        display.textContent = `Ano: ${year} - ${images[year].details}`;
+        image.src = images[year].src;
+        details.textContent = images[year].details;
     }
 
     function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('active');
-        document.getElementById('main-content').classList.toggle('active');
-    }
-
-    function toggleMenu() {
-        const menuBar = document.getElementById('menu-bar');
-        menuBar.style.display = menuBar.style.display === 'flex' ? 'none' : 'flex';
+        document.getElementById("sidebar").classList.toggle("active");
+        document.getElementById("main-content").classList.toggle("active");
     }
 </script>
 </body>
