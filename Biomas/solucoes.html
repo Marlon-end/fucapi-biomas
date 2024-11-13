@@ -19,6 +19,33 @@
             padding: 1rem;
             text-align: center;
         }
+        /* Barra de menu centralizada */
+        .menu-bar {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            background-color: #4CAF50;
+        }
+
+        .menu-bar a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .menu-bar a:hover {
+            background-color: #575757;
+        }
         .sidebar-toggle {
             position: fixed;
             top: 20px;
@@ -71,6 +98,20 @@
             color: #0ac432;
             margin-top: 1rem;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
         @media (max-width: 768px) {
             .sidebar {
                 width: 100%;
@@ -83,71 +124,152 @@
             .sidebar-toggle {
                 left: 10px;
             }
+            
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Soluções para a Preservação da Amazônia</h1>
-</header>
-<span class="sidebar-toggle" onclick="toggleSidebar()">☰ Menu</span>
-
-<div class="sidebar" id="sidebar">
-    <a href="inicio-biomas.html" onclick="toggleSidebar()">Início</a>
-    <a href="projetos.html" onclick="toggleSidebar()">Projetos</a>
-    <a href="dados.html" onclick="toggleSidebar()">Dados da Poluição do Ar</a>
-    <a href="#solucoes" onclick="toggleSidebar()">Soluções</a>
-</div>
-
-<div class="main-content" id="main-content">
+    <header>
+        <span class="menu-toggle" onclick="toggleMenu()">☰ Menu</span>
+        <div class="menu-bar" id="menu-bar">
+            <a href="inicio-biomas.html">Início</a>
+            <a href="projetos.html">Projetos</a>
+            <a href="dados.html">Dados da Poluição do Ar</a>
+            <a href="#solucoes">Soluções</a>
+        </div>
+    </header>
+    
+    <div class="main-content" id="main-content">
+        <!-- Conteúdo principal -->
+    </div>
     <div class="container">
         <section id="solucoes">
             <h2>Objetivo</h2>
-            <p>O projeto visa monitorar e preservar a biodiversidade da Amazônia, promovendo a conservação da floresta...</p>
+            <p>O projeto visa monitorar e preservar a biodiversidade da Amazônia, promovendo a conservação da floresta. Através da utilização de sensores, circuitos, energia solar, um sistema de irrigação e a incorporação de saberes populares, vamos proporcionar uma experiência educativa e conscientizadora sobre a importância da conservação da floresta.</p>
 
             <h2>Soluções</h2>
-            <p>Abaixo estão algumas ações locais importantes para a preservação da Amazônia:</p>
+            <p>As ações locais são essenciais para a preservação da Amazônia, pois envolvem as comunidades
+                que vivem diretamente na região. Aqui estão algumas ações locais importantes:</p>
             <ul>
-                <li><strong>Fortalecer as comunidades locais:</strong> Apoiar iniciativas lideradas por comunidades indígenas e ribeirinhas...</li>
-                <li><strong>Desenvolvimento de cooperativas sustentáveis:</strong> Cooperativas de pequenos agricultores e extrativistas...</li>
-                <li><strong>Educação ambiental nas escolas locais:</strong> Incorporar programas de educação ambiental...</li>
-                <li><strong>Reflorestamento e recuperação de áreas degradadas:</strong> Incentivar moradores a participar do plantio...</li>
-                <li><strong>Incentivo ao ecoturismo:</strong> Ecoturismo de pequeno porte cria empregos e valoriza a floresta...</li>
-                <li><strong>Monitoramento local do desmatamento:</strong> Envolver comunidades em projetos de monitoramento...</li>
-                <li><strong>Fomento ao uso sustentável da biodiversidade:</strong> Apoiar projetos que incentivem o uso de recursos florestais...</li>
-                <li><strong>Promover alternativas econômicas:</strong> Oferecer formação para práticas sustentáveis como a produção de mel...</li>
+                <li><strong>Fortalecer as comunidades locais:</strong> Apoiar iniciativas lideradas por comunidades
+                    indígenas e ribeirinhas, que conhecem a floresta e têm práticas de uso sustentável.
+                    Incentivar a autonomia e oferecer subsídios para que essas comunidades possam
+                    proteger suas terras e florestas.</li>
+                <li><strong>Desenvolvimento de cooperativas sustentáveis:</strong> Cooperativas de pequenos
+                    agricultores e extrativistas podem impulsionar uma economia sustentável. Elas
+                    promovem a venda de produtos da floresta, como castanhas, óleos, frutas e borracha,
+                    de maneira sustentável, gerando renda sem desmatar.</li>
+                <li><strong>Educação ambiental nas escolas locais:</strong> Incorporar programas de educação ambiental
+                    para crianças e jovens em escolas da região, ensinando a importância da
+                    biodiversidade da Amazônia e formas de uso sustentável.</li>
+                <li><strong>Reflorestamento e recuperação de áreas degradadas:</strong> Projetos de recuperação de
+                    áreas desmatadas são importantes para manter a floresta. Incentivar moradores e
+                    trabalhadores locais a participar do plantio de árvores nativas ajuda a restaurar o
+                    ecossistema.</li>
+                <li><strong>Incentivo ao ecoturismo:</strong> Ecoturismo de pequeno porte ajuda a criar empregos e a
+                    valorizar a floresta. Treinar guias locais e desenvolver infraestrutura sustentável pode
+                    atrair visitantes sem causar danos ao ambiente.</li>
+                <li><strong>Monitoramento local do desmatamento:</strong> Envolver comunidades em projetos de
+                    monitoramento da floresta com apoio de ONGs e de programas de monitoramento por
+                    satélite. Isso permite identificar atividades ilegais, como mineração ou desmatamento,
+                    rapidamente.</li>
+                <li><strong>Fomento ao uso sustentável da biodiversidade:</strong> AApoiar projetos que incentivem o uso
+                    de recursos florestais, como plantas medicinais, frutos e sementes, de forma
+                    controlada e respeitosa. Isso pode gerar emprego e renda, valorizando o conhecimento
+                    tradicional e a biodiversidade.</li>
+                <li><strong>Promover alternativas econômicas:</strong> : Oferecer formação e subsídios para atividades
+                    sustentáveis, como a produção de mel, a pesca sustentável, o cultivo de plantas nativas
+                    e outras práticas que não causem degradação.</li>
             </ul>
 
             <h2>Agricultura de Conservação (CA)</h2>
-            <p>A CA visa equilibrar a preservação ambiental com a produtividade agrícola, com práticas como cobertura do solo...</p>
+            <p>A agricultura de conservação (CA) é uma abordagem agrícola que visa equilibrar a preservação ambiental com a produtividade das lavouras. Ela se baseia em técnicas e práticas que minimizam o impacto ambiental do cultivo de vegetais e da criação de gado.</p>
+            <p>Os princípios fundamentais da CA incluem:</p>
+                <ul>
+                    <li>Reduzir ou suprimir a mobilização do solo.</li>
+                    <li>Manter resíduos culturais na superfície do solo.</li>
+                    <li>Diversificar as espécies plantadas.</li>
+                </ul>
 
+                <h3>Práticas da Agricultura de Conservação</h3>
+                <p>Algumas práticas importantes incluem:</p>
+                <ul>
+                    <li><strong>Cobertura permanente do solo</strong> com palhada ou plantas de cobertura, como adubos verdes.</li>
+                    <li><strong>Rotação de culturas</strong> para manter a saúde do solo.</li>
+                    <li><strong>Uso de sobras das culturas</strong> para cobertura dos campos, preservando a umidade e nutrientes do solo.</li>
+                </ul>
+
+                <h3>Benefícios da Agricultura de Conservação</h3>
+                <p>A adoção da CA traz vantagens como:</p>
+                <ul>
+                    <li>Redução da necessidade de arar o solo.</li>
+                    <li>Menor uso de herbicidas e outros insumos agrícolas.</li>
+                    <li>Menor desgaste de equipamentos e consumo de combustível.</li>
+                    <li>Economia de recursos financeiros.</li>
+                    <li>Melhoria nas características químicas, físicas e biológicas do solo.</li>
+                </ul>
+                <p>Essas práticas se mostram mais efetivas com o apoio de governos e organizações locais e internacionais, promovendo uma rede de preservação e desenvolvimento sustentável na Amazônia.</p>
             <h2>Incentivo: Crédito de Carbono</h2>
-            <p>O crédito de carbono é um mecanismo que representa a redução de CO2e da atmosfera, usado para compensar emissões...</p>
+            <p>O crédito de carbono é um mecanismo monetário que representa a redução ou remoção de uma tonelada de dióxido de carbono equivalente (CO<sub>2</sub>e) da atmosfera. Ele funciona como a moeda do mercado de carbono, utilizada para compensar as emissões de gases de efeito estufa.</p>
+
+        <p>O conceito surgiu em 1997, com o Protocolo de Kyoto, para ajudar os países a cumprirem suas metas de redução de emissões de gases de efeito estufa.</p>
+
+        <h3>Como Funciona o Mercado de Carbono</h3>
+        <p>O mercado de carbono opera em duas modalidades:</p>
+        <ul>
+            <li><strong>Mercado Regulamentado:</strong> o governo intervém no mercado para regular as transações e emissões.</li>
+            <li><strong>Mercado Voluntário:</strong> as compensações acontecem espontaneamente entre empresas e entidades.</li>
+        </ul>
+
+        <h3>Geração de Créditos de Carbono</h3>
+        <p>Para gerar créditos de carbono, é necessário realizar projetos e ações que promovam o desenvolvimento sustentável, tais como:</p>
+        <ul>
+            <li>Redução do desmatamento</li>
+            <li>Promoção do consumo consciente</li>
+            <li>Utilização de fontes de energia alternativas</li>
+        </ul>
+
+        <p>Cada iniciativa é rigorosamente avaliada para assegurar a legitimidade e a precisão das reduções de emissões. Os países que conseguem reduzir suas emissões recebem uma certificação do <strong>Mecanismo de Desenvolvimento Limpo (MDL)</strong>. Esses créditos podem então ser comercializados com países que não atingiram suas metas.</p>
+
+        <h3>Benefícios do Mercado de Carbono</h3>
             
-            <h2>Vantagens e Desvantagens</h2>
-            <table>
+        <h3>Vantagens e Desvantagens dos Créditos de Carbono</h3>
+        <table>
+            <thead>
                 <tr>
                     <th>Vantagens</th>
                     <th>Desvantagens</th>
                 </tr>
+            </thead>
+            <tbody>
                 <tr>
-                    <td>Representa a não emissão de carbono...</td>
-                    <td>É visto por alguns como uma licença para poluir...</td>
+                    <td>Os créditos de carbono representam a não emissão de toneladas de carbono na atmosfera, simbolizando uma ação de preservação ambiental.</td>
+                    <td>Muitos estudiosos e ambientalistas acreditam que os créditos de carbono não são vantajosos, considerando-os uma licença para continuar poluindo.</td>
                 </tr>
                 <tr>
-                    <td>Auxilia países que não conseguem reduzir suas emissões...</td>
-                    <td>A supervalorização pode prejudicar países em desenvolvimento...</td>
+                    <td>A criação desses créditos visa auxiliar os países que não conseguem reduzir suas emissões, oferecendo uma forma de alcançar as metas, mesmo que seja com projetos em territórios hospedeiros.</td>
+                    <td>O mercado de carbono, por movimentar significativamente a economia dos países, pode ser supervalorizado.</td>
                 </tr>
-            </table>
+                <tr>
+                    <td>Os países hospedeiros de projetos sustentáveis se beneficiam tanto pela execução dessas ações, dada a dificuldade de implementação, quanto pelo impulso econômico ao vender os créditos de carbono para outros países.</td>
+                    <td>A supervalorização da economia pode prejudicar países em desenvolvimento, pois não possuem tecnologias suficientes para implementar projetos de redução de emissões. Assim, o aumento dos valores dos créditos os impossibilita de comprá-los.</td>
+                </tr>
+            </tbody>
+        </table>
         </section>
     </div>
 </div>
 
+
 <script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu-bar');
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
     function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('active');
-        document.getElementById('main-content').classList.toggle('active');
+        document.getElementById("sidebar").classList.toggle("active");
+        document.getElementById("main-content").classList.toggle("active");
     }
 </script>
 
