@@ -210,6 +210,7 @@
         <a href="Biomas/projetos.html">Projetos</a>
         <a href="Biomas/dados.html">Dados da Poluição do Ar</a>
         <a href="Biomas/solucoes.html">Soluções</a>
+        <a href="Biomas/ecomonitor.html">Ecomonitor</a> <!-- Novo link -->
     </div>
 </header>
 
@@ -223,6 +224,7 @@
     <a href="Biomas/projetos.html" onclick="toggleSidebar()">Projetos</a>
     <a href="Biomas/dados.html" onclick="toggleSidebar()">Dados da Poluição do Ar</a>
     <a href="Biomas/solucoes.html" onclick="toggleSidebar()">Soluções</a>
+    <a href="Biomas/ecomonitor.html" onclick="toggleSidebar()">Ecomonitor</a> <!-- Novo link -->
 </div>
 
 <div class="main-content" id="main-content">
@@ -285,6 +287,7 @@
         timelineDisplay.innerText = `Ano: ${currentEvent.year}`;
         timelineImage.src = currentEvent.image;
     }
+    
 </script>
 </body>
 </html>
