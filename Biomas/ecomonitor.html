@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecomonitor - Monitoramento Agrícola Inteligente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: #4CAF50;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .container {
+            padding: 20px;
+        }
+        .content-section {
+            margin-bottom: 20px;
+        }
+        .component {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .component img {
+            width: 100px;
+            margin-right: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        @media (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+            .component {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .component img {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Ecomonitor</h1>
+    <p>Monitoramento Agrícola para Cultivo Sustentável</p>
+    <nav>
+        <ul>
+            <li><a href="#objetivo">Objetivo</a></li>
+            <li><a href="#componentes">Componentes</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <section id="objetivo" class="content-section">
+        <h2>Objetivo do Projeto</h2>
+        <p>Juntando alguns sensores e processando suas informações em um
+            microcontrolador, pretende-se desenvolver um bloco de leitura de dados
+            financeiramente mais viável que os sofisticados e complexos itens de leitura de
+            dados que geralmente são utilizados por técnicos especializados.
+            Estes dados serão transferidos para uma display que informará de maneira
+            clara, situações de risco e dados necessários para que se desenvolva um bom
+            cultivo, como umidade do solo, umidade do ar, temperatura, gases tóxicos e
+            chamas.
+            Com estes dados coletados, o pequeno agricultor do interior poderá entender
+            melhor como manejar seu cultivo, em dia mais quentes, poderá optar por utilizar o
+            uso de irrigadores para fornecer uma umidade maior ao solo, ou em caso de gases
+            tóxicos ou incêndio, tomar as medidas cabíveis, para se proteger e acionar órgãos
+            competentes.</p>
+    </section>
+
+    <section id="componentes" class="content-section">
+        <h2>Componentes Técnicos</h2>
+
+        <div class="component">
+            <img src="imagens/sensor1.png" alt="Sensor de Umidade e Temperatura - DHT11">
+            <div>
+                <h3>Sensor de Umidade e Temperatura – DHT11</h3>
+                <p>É um dos componentes mais utilizados em projetos que envolva medição de
+                    temperatura e umidade ambiente. Este sensor faz medições de temperatura de 0º
+                    até 50º celsius e mede a umidade do ar nas faixas de 20% a 90%. A precisão
+                    (margem de erro) do sensor para medição de temperatura é de aproximadamente 2º
+                    celsius e para umidade é de 5%.</p>
+            </div>
+        </div>
+
+        <div class="component">
+            <img src="imagens/sensor11.png" alt="Sensor de Umidade do Solo">
+            <div>
+                <h3>Sensor de Umidade do Solo</h3>
+                <p>O Sensor de Umidade do Solo Higrômetro detecta as variações de umidade
+                    no solo. Composto por uma sonda e um módulo de controle, seu funcionamento é
+                    muito simples, quando o solo está seco, a saída do sensor fica em estado alto e
+                    quando úmido, a saída do sensor fica em estado baixo.</p>
+                    <p>O limite entre seco e úmido pode ser ajustado através do potenciômetro
+                        presente no sensor que regulará a saída digital D0. Contudo, para ter uma resolução
+                        melhor, é possível utilizar a saída analógica A0 e conectar a um conversor AD, como
+                        a presente no Arduino, por exemplo.</p>
+            </div>
+        </div>
+
+        <div class="component">
+            <img src="imagens/sensor2.png" alt="Sensor de Nível de Água">
+            <div>
+                <h3>Sensor de Nível de Água</h3>
+                <p>O Módulo Sensor Detector de Nível / Profundidade de Água é comumente
+                    utilizado para detectar o nível ou profundidade de um recipiente com água. Projetos com Arduino ou outras plataformas microcontroladoras em que seja
+                    necessário medir nível (profundidade) de água em um recipiente e pode ser utilizado
+                    também como detector de chuva.</p>
+            </div>
+        </div>
+
+        <div class="component">
+            <img src="imagens/sensor3.png" alt="Arduino Uno">
+            <div>
+                <h3>Arduino Uno</h3>
+                <p>Arduino UNO é uma placa de microcontrolador baseada no ATmega328P, ela
+                    tem 14 pinos de entrada/saída digitais (dos quais 6 podem ser usados como saídas
+                    PWM), 6 entradas analógicas, um ressonador cerâmico de 16 MHz, uma conexão
+                    USB, um conector de energia, um cabeçalho ICSP e um botão de reset. Ela contém
+                    tudo o que é necessário para dar suporte ao microcontrolador; basta conectá-lo a um
+                    computador com um cabo USB ou ligá-lo com um adaptador CA para CC ou bateria
+                    para começar.</p>
+            </div>
+        </div>
+
+        <div class="component">
+            <img src="imagens/sensor4.png" alt="Sensor Detector de Fogo - KY-026">
+            <div>
+                <h3>Sensor Detector de Fogo – KY-026</h3>
+                <p>Este sensor pode detectar chama/fogo com luz de largura de onda 760nm até
+                    1100mm. Pode detectar a chama/fogo em uma distância de até 80 cm
+                    aproximadamente.</p>
+                <p>O ângulo de detecção é de 60º, sendo sensível particularmente ao espectro
+                    da chama. A sensibilidade é ajustável por um trimpot (potenciômetro na placa). A
+                    saída deste sensor pode ser conectada diretamente à entrada do microcontrolador.</p>
+            </div>
+        </div>
+
+        <div class="component">
+            <img src="imagens/sensor5.png" alt="Display LCD 16x2 e 20x4">
+            <div>
+                <h3>Display LCD 16x2 e 20x4</h3>
+                <p>O Display Lcd 16x2 Backlight Azul é a solução perfeita para quem busca um
+                    display de baixo custo e alta eficiência, ele lhe permite exibir dados de entrada ou
+                    saída do seu projeto, dispõe de 2 linhas e 16 colunas, seu backlight é azul e sua
+                    escrita branca, e é baseado no controlador HD44780, um dos controladores mais
+                    utilizados na indústria de displays lcds, pode ser utilizado com Arduino, Pic, Arm,
+                    Raspberry entre outros.</p>
+            </div>
+        </div>
+
+        <div class="component">
+            <img src="imagens/sensor9.png" alt="ESP32 com Wi-Fi e Bluetooth">
+            <div>
+                <h3>ESP32 com Wi-Fi e Bluetooth</h3>
+                <p>O Módulo ESP32 com Wifi e Bluetooth ESP-WROOM-32 é um compacto e
+                    poderoso eletrônico baseado no chip ESP32-D0WDQ6, que mostra-se uma
+                    evolução do conhecido módulo ESP8266 da Espressif Systems, incorporando
+                    conectividade WiFi e conexão Bluetooth.</p>
+                <p>ônicos, apresentando possibilidades de aplicação simples e complexas, como
+                    transmissões e codificação de voz, por exemplo, dispensando o uso de outros
+                    microcontroladores, entre eles, o Arduino. É principalmente voltado aos projetos
+                    da Internet das Coisas - IOT, incluindo Robótica. O ESP 32 Módulo Wifi e Bluetooth
+                    conta com o microprocessador Xtensa 32-Bits LX6 que apresenta baixo consumo de 
+                    energia, além de se destacar pela presença de dois núcleos de CPU (processador
+                    dual core), permitindo aplicação em conjunto com sensores, módulos e diferentes
+                    interfaces.</p>
+                <p>Para proporcionar melhores resultados apresenta possibilidade de atualização
+                    do firmware via WiFi, mostrando-se um conjunto poderoso com ampla capacidade
+                    de processamento. </p>
+            </div>
+        </div>
+
+        <div class="component">
+            <img src="imagens/sensor7.png" alt="Módulo Relé 5V">
+            <div>
+                <h3>Módulo Relé 5V</h3>
+                <p>Os relés são componentes eletromecânicos capazes de controlar circuitos
+                    externos de grandes correntes a partir de pequenas correntes ou tensões, ou seja,
+                    acionando um relé com uma pilha podemos controlar um motor que esteja ligado em
+                    110 ou 220 volts, por exemplo.</p>
+                <p>O Módulo Relé 5V 1 Canal permite que a partir de uma plataforma
+                    microcontrolada seja possível controlar cargas AC (alternada) de forma simples e
+                    prática. Por ter apenas 1 canal, é possível controlar apenas uma carga AC de até
+                    Comumente é utilizado em projetos de automação residencial para controle de
+                    lâmpadas, ventiladores e outras saídas que possam ser acionadas através de relé.</p>
+            </div>
+        </div>
+
+        <div class="component">
+            <img src="imagens/sensor8.png" alt="Mini Bomba de Água Submersível - 5Vcc - Ponta Inclinada">
+            <div>
+                <h3>Mini Bomba de Água Submersível - 5Vcc - Ponta Inclinada</h3>
+                <p>Características: - Utiliza componentes eletrônicos avançados e eixo resistente
+                    ao desgaste de alta qualidade. - Operação suave, alta eficiência, bom desempenho,
+                    longa vida útil. - Pode ser utilizada por um longo tempo de trabalho contínuo.</p>
+            </div>
+        </div>
+
+        <div class="component">
+            <img src="imagens/sensor10.png" alt="Sensor de Gás MQ-135">
+            <div>
+                <h3>Especificações: Sensor de Gás MQ-135</h3>
+                <p>O sensor MQ-135 é um sensor de qualidade do ar utilizado para medir
+                    concentrações de diferentes gases presentes no ambiente. Esse sensor é projetado
+                    para detectar a presença de gases nocivos à saúde humana, como: amônia, óxido
+                    nítrico, álcool, benzeno, fumaça, dióxido de carbono, entre outros.</p>
+                <p>O funcionamento do MQ-135 é baseado na mudança na resistência elétrica
+                    do seu elemento sensível quando entra em contato com diferentes gases. Cada gás
+                    tem uma resposta característica que influencia a resistência do sensor.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
