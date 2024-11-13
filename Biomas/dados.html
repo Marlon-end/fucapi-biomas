@@ -69,21 +69,10 @@
             margin: 2rem auto;
             padding: 1rem;
         }
-        table {
+        iframe {
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-            text-align: center;
-        }
-        th, td {
-            padding: 8px;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
+            height: 500px;
+            border: none;
         }
 
         /* Media Queries para Responsividade */
@@ -98,15 +87,11 @@
                 margin: 1rem; /* Menos margem em telas menores */
                 padding: 0.5rem; /* Menos padding em telas menores */
             }
-            th, td {
-                padding: 4px; /* Menos padding nas células da tabela */
-                font-size: 0.9rem; /* Tamanho da fonte menor em telas menores */
-            }
         }
         
         @media (max-width: 480px) {
-            th, td {
-                font-size: 0.8rem; /* Tamanho da fonte ainda menor para telas pequenas */
+            iframe {
+                height: 400px; /* Ajusta o tamanho do iframe para telas pequenas */
             }
         }
     </style>
@@ -130,50 +115,13 @@
         
         <!-- Tabela de Qualidade do Ar -->
         <h2>Qualidade do Ar em Manaus</h2>
-        <table>
-            <tr>
-                <th>Bairro</th>
-                <th>Índice de Qualidade do Ar (IQA)</th>
-                <th>Nível de Poluição</th>
-                <th>Data da Medição</th>
-            </tr>
-            <tr>
-                <td>Centro</td>
-                <td>45</td>
-                <td>Bom</td>
-                <td>27/10/2024</td>
-            </tr>
-            <tr>
-                <td>Adrianópolis</td>
-                <td>70</td>
-                <td>Moderado</td>
-                <td>27/10/2024</td>
-            </tr>
-            <tr>
-                <td>Chapada</td>
-                <td>90</td>
-                <td>Insalubre para Grupos Sensíveis</td>
-                <td>27/10/2024</td>
-            </tr>
-            <tr>
-                <td>Alvorada</td>
-                <td>120</td>
-                <td>Insalubre</td>
-                <td>27/10/2024</td>
-            </tr>
-            <tr>
-                <td>Japiim</td>
-                <td>150</td>
-                <td>Insalubre</td>
-                <td>27/10/2024</td>
-            </tr>
-            <tr>
-                <td>Cidade Nova</td>
-                <td>200</td>
-                <td>Perigoso</td>
-                <td>27/10/2024</td>
-            </tr>
-        </table>
+        
+        <!-- Incorporando a planilha do Google -->
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSicKaqohp-xMrbSVNG_962CTN5upqFwxfdNzPZwvkM8eimM7FPPbYVYxrm_HHSjXDlo0Go3VbZ8EXf/pub?output=html" width="100%" height="500"></iframe>
+
+        
+        <!-- Link para acessar o Google Drive diretamente -->
+        <p><a href= https://docs.google.com/spreadsheets/d/e/2PACX-1vSicKaqohp-xMrbSVNG_962CTN5upqFwxfdNzPZwvkM8eimM7FPPbYVYxrm_HHSjXDlo0Go3VbZ8EXf/pubhtml?gid=0&single=true target="_blank">Acesse a Planilha no Google Drive</a></p>
     </div>
 </div>
 
