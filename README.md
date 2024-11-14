@@ -259,7 +259,7 @@
         <h3>Linha do Tempo da Degradação Amazônica</h3>
         <div class="timeline-slider">
             <img src="imagens/fogo.png" alt="Fogo" id="fireIcon">
-            <input type="range" min="1" max="100" value="50">
+            <input type="range" min="1" max="6" value="1">
         </div>
         <p id="timeline-year">2000</p>
     </div>
@@ -302,11 +302,7 @@
         document.getElementById("sidebar").classList.toggle("active");
         document.getElementById("main-content").classList.toggle("active");
     }
-    function toggleMenu() {
-        document.getElementById("menu-bar").style.display = 
-            document.getElementById("menu-bar").style.display === 'none' ? 'block' : 'none';
-    }
-    
+   
 </script>
 </body>
 </html>
