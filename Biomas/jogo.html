@@ -183,8 +183,11 @@
     let rightPressed = false;
 
     // Funções de movimentação e tiro
-    leftButton.addEventListener('click', () => leftPressed = true);
-    rightButton.addEventListener('click', () => rightPressed = true);
+    leftButton.addEventListener('touchstart', () => leftPressed = true);
+    rightButton.addEventListener('touchstart', () => rightPressed = true);
+    leftButton.addEventListener('touchend', () => leftPressed = false);
+    rightButton.addEventListener('touchend', () => rightPressed = false);
+
     shootButton.addEventListener('click', shootWater);
 
     // Função para mover o bombeiro
@@ -281,7 +284,7 @@
         }, 20);
     }
 
-    // Função para atirar fogo dos ladrões
+    // Função para atirar fogo
     function shootFogo(ladrao) {
         let fogo = document.createElement('div');
         fogo.classList.add('fogo');
