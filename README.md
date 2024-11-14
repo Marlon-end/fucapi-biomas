@@ -233,10 +233,10 @@
 </section>
 
 <div class="sidebar" id="sidebar">
-    <a href="Biomas/projetos.html" onclick="toggleSidebar()"><img src="imagens/projetos.png" alt="Projetos Icon">Projetos</a>
-    <a href="Biomas/dados.html" onclick="toggleSidebar()"><img src="imagens/dados.png" alt="Dados Icon">Dados da Poluição do Ar</a>
-    <a href="Biomas/solucoes.html" onclick="toggleSidebar()"><img src="imagens/solucoes.png" alt="Soluções Icon">Soluções</a>
-    <a href="Biomas/ecomonitor.html" onclick="toggleSidebar()"><img src="imagens/ecomonitor.png" alt="Ecomonitor Icon">Ecomonitor</a> <!-- Novo link -->
+    <a href="Biomas/logo5.html" onclick="toggleSidebar()"><img src="imagens/projetos.png" alt="Projetos Icon">Projetos</a>
+    <a href="Biomas/logo2.html" onclick="toggleSidebar()"><img src="imagens/dados.png" alt="Dados Icon">Dados da Poluição do Ar</a>
+    <a href="Biomas/logo3.html" onclick="toggleSidebar()"><img src="imagens/solucoes.png" alt="Soluções Icon">Soluções</a>
+    <a href="Biomas/logo1.html" onclick="toggleSidebar()"><img src="imagens/ecomonitor.png" alt="Ecomonitor Icon">Ecomonitor</a> <!-- Novo link -->
 </div>
 
 <div class="main-content" id="main-content">
