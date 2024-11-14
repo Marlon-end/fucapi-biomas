@@ -291,7 +291,30 @@
         const currentEvent = events[sliderValue - 1];
         timelineDisplay.innerText = `Ano: ${currentEvent.year} - ${currentEvent.description}`;
 
-        fireIcon.src = `imagens/fogo${sliderValue}.png`;
+       function updateTimeline() {
+    const sliderValue = document.getElementById("timelineSlider").value;
+    const timelineDisplay = document.getElementById("timelineDisplay");
+    const fireIcon = document.getElementById("fireIcon");
+    const timelineImage = document.getElementById("timelineImage");
+
+    const events = [
+        { year: 2000, description: "Início da linha do tempo" },
+        { year: 2005, description: "Alta da poluição do ar" },
+        { year: 2010, description: "Secas históricas e perda de biodiversidade" },
+        { year: 2015, description: "Aumento de incêndios" },
+        { year: 2020, description: "Risco de desertificação" },
+        { year: 2025, description: "Situação crítica de extinção" },
+    ];
+
+    const currentEvent = events[sliderValue - 1];
+    timelineDisplay.innerText = `Ano: ${currentEvent.year} - ${currentEvent.description}`;
+
+    // Ajuste para o ícone do fogo aparecer conforme o ano selecionado
+    fireIcon.style.opacity = 1; // Garantir que o ícone está visível
+    fireIcon.src = `imagens/fogo${sliderValue}.png`; // Atualiza a imagem com o ano correto
+    timelineImage.src = `imagens/evento${sliderValue}.jpg`; // Atualiza a imagem do evento
+}
+
         timelineImage.src = `imagens/evento${sliderValue}.jpg`;
     }
 </script>
