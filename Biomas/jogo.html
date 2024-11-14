@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bombeiro na Floresta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #228B22;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #gameContainer {
+            width: 100%;
+            height: 100%;
+            max-width: 800px;
+            max-height: 600px;
+            background-image: url('https://www.example.com/amazonia_background.jpg'); /* Coloque a URL do fundo */
+            background-size: cover;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #000;
+        }
+
+        #bombeiro {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background-color: #FFD700;
+            border-radius: 10px;
+            transform: translateX(-50%);
+        }
+
+        .agua {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            background-color: blue;
+            border-radius: 5px;
+        }
+
+        .ladrao {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .fogo {
+            position: absolute;
+            width: 10px;
+            height: 15px;
+            background-color: orange;
+            border-radius: 5px;
+        }
+
+        #score, #vida {
+            position: absolute;
+            top: 10px;
+            font-size: 24px;
+        }
+
+        #score {
+            left: 10px;
+        }
+
+        #vida {
+            right: 10px;
+        }
+
+        #gameOver {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 36px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div id="gameContainer">
+    <div id="bombeiro"></div>
+    <div id="score">Pontos: 0</div>
+    <div id="vida">Vida: 3</div>
+    <div id="gameOver">GAME OVER</div>
+</div>
+
+<script>
+    // Variáveis iniciais
+    const bombeiro = document.getElementById('bombeiro');
+    const gameContainer = document.getElementById('gameContainer');
+    const scoreElement = document.getElementById('score');
+    const vidaElement = document.getElementById('vida');
+    const gameOverElement = document.getElementById('gameOver');
+    const gameWidth = gameContainer.offsetWidth;
+    const gameHeight = gameContainer.offsetHeight;
+
+    let bombeiroPositionX = gameWidth / 2 - 25;
+    let bombeiroPositionY = gameHeight - 60;
+    let ladraoSpeed = 1;
+    let waterSpeed = 5;
+    let score = 0;
+    let vida = 3;
+    let ladroes = [];
+    let waterShots = [];
+    let fogoShots = [];
+
+    // Movimentos do bombeiro
+    let leftPressed = false;
+    let rightPressed = false;
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') leftPressed = true;
+        if (e.key === 'ArrowRight') rightPressed = true;
+        if (e.key === ' ') shootWater(); // Espaço para atirar água
+    });
+
+    document.addEventListener('keyup', (e) => {
+        if (e.key === 'ArrowLeft') leftPressed = false;
+        if (e.key === 'ArrowRight') rightPressed = false;
+    });
+
+    // Função para mover o bombeiro
+    function moveBombeiro() {
+        if (leftPressed && bombeiroPositionX > 0) {
+            bombeiroPositionX -= 5;
+        }
+        if (rightPressed && bombeiroPositionX < gameWidth - 50) {
+            bombeiroPositionX += 5;
+        }
+        bombeiro.style.left = bombeiroPositionX + 'px';
+    }
+
+    // Função para criar ladrões
+    function createLadrao() {
+        let ladrao = document.createElement('div');
+        ladrao.classList.add('ladrao');
+        ladrao.style.left = Math.random() * (gameWidth - 30) + 'px'; // Ladrão começa em posição aleatória
+        ladrao.style.top = '-30px'; // Começa fora da tela
+        ladrao.direction = Math.random() > 0.5 ? 'left' : 'right'; // Direção aleatória (esquerda ou direita)
+        gameContainer.appendChild(ladrao);
+        ladroes.push(ladrao);
+    }
+
+    // Função para mover os ladrões
+    function moveLadroes() {
+        ladroes.forEach((ladrao, index) => {
+            let ladraoPositionY = parseInt(ladrao.style.top) + ladraoSpeed;
+            let ladraoPositionX = parseInt(ladrao.style.left);
+
+            // Ladrão vai de cima para baixo
+            if (ladraoPositionY >= gameHeight - 50) {
+                gameOver();
+            } else {
+                ladrao.style.top = ladraoPositionY + 'px';
+            }
+
+            // Verifica a direção dos ladrões
+            if (ladrao.direction === 'left') {
+                ladraoPositionX -= 2;
+            } else {
+                ladraoPositionX += 2;
+            }
+
+            if (ladraoPositionX < 0 || ladraoPositionX > gameWidth - 30) {
+                ladrao.direction = ladrao.direction === 'left' ? 'right' : 'left';
+            }
+
+            ladrao.style.left = ladraoPositionX + 'px';
+
+            // Verificar colisão com a água
+            waterShots.forEach((water, waterIndex) => {
+                if (water.offsetTop < ladraoPositionY + 30 &&
+                    water.offsetTop + 20 > ladraoPositionY &&
+                    water.offsetLeft < ladrao.offsetLeft + 30 &&
+                    water.offsetLeft + 10 > ladrao.offsetLeft) {
+                    ladrao.remove();
+                    water.remove();
+                    ladroes.splice(index, 1);
+                    waterShots.splice(waterIndex, 1);
+                    score += 10;
+                    scoreElement.textContent = 'Pontos: ' + score;
+                }
+            });
+
+            // Ladrões atirando fogo
+            if (Math.random() < 0.01) {
+                shootFogo(ladrao);
+            }
+        });
+    }
+
+    // Função para atirar água
+    function shootWater() {
+        let agua = document.createElement('div');
+        agua.classList.add('agua');
+        agua.style.left = bombeiroPositionX + 20 + 'px'; // Água sai da mangueira do bombeiro
+        agua.style.top = bombeiroPositionY - 20 + 'px';
+        gameContainer.appendChild(agua);
+        waterShots.push(agua);
+        moveWater(agua);
+    }
+
+    // Função para mover a água
+    function moveWater(agua) {
+        let aguaPositionY = bombeiroPositionY - 20;
+        const waterInterval = setInterval(() => {
+            if (aguaPositionY <= 0) {
+                agua.remove();
+                clearInterval(waterInterval);
+                waterShots = waterShots.filter(w => w !== agua);
+            } else {
+                aguaPositionY -= waterSpeed;
+                agua.style.top = aguaPositionY + 'px';
+            }
+        }, 20);
+    }
+
+    // Função para atirar fogo dos ladrões
+    function shootFogo(ladrao) {
+        let fogo = document.createElement('div');
+        fogo.classList.add('fogo');
+        fogo.style.left = parseInt(ladrao.style.left) + 10 + 'px';
+        fogo.style.top = parseInt(ladrao.style.top) + 30 + 'px';
+        gameContainer.appendChild(fogo);
+        fogoShots.push(fogo);
+        moveFogo(fogo);
+    }
+
+    // Função para mover o fogo
+    function moveFogo(fogo) {
+        let fogoPositionY = parseInt(fogo.style.top) + 5;
+        const fogoInterval = setInterval(() => {
+            if (fogoPositionY >= gameHeight) {
+                fogo.remove();
+                clearInterval(fogoInterval);
+                fogoShots = fogoShots.filter(f => f !== fogo);
+            } else {
+                fogoPositionY += 5;
+                fogo.style.top = fogoPositionY + 'px';
+            }
+
+            // Verificar colisão com o bombeiro
+            if (fogoPositionY >= bombeiroPositionY && fogoPositionY <= bombeiroPositionY + 50 &&
+                parseInt(fogo.style.left) >= bombeiroPositionX && parseInt(fogo.style.left) <= bombeiroPositionX + 50) {
+                fogo.remove();
+                clearInterval(fogoInterval);
+                fogoShots = fogoShots.filter(f => f !== fogo);
+                vida -= 1;
+                vidaElement.textContent = 'Vida: ' + vida;
+                if (vida <= 0) gameOver();
+            }
+        }, 20);
+    }
+
+    // Função de Game Over
+    function gameOver() {
+        gameOverElement.style.display = 'block';
+        clearInterval(ladroesInterval);
+        clearInterval(waterInterval);
+        clearInterval(fogoInterval);
+    }
+
+    // Função principal de animação
+    function gameLoop() {
+        moveBombeiro();
+        moveLadroes();
+    }
+
+    // Criar ladrões a cada 2 segundos
+    let ladroesInterval = setInterval(createLadrao, 2000);
+    setInterval(gameLoop, 20);
+
+    // Responsividade para dispositivos móveis
+    window.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        if (touch.clientX < gameWidth / 2) {
+            leftPressed = true;
+        } else {
+            rightPressed = true;
+        }
+    });
+
+    window.addEventListener('touchend', () => {
+        leftPressed = false;
+        rightPressed = false;
+    });
+</script>
+
+</body>
+</html>
