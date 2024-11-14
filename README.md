@@ -261,12 +261,44 @@
             <img src="imagens/fogo.png" alt="Fogo" id="fireIcon">
             <input type="range" min="1" max="100" value="50">
         </div>
-        <p id="timeline-year">2020</p>
+        <p id="timeline-year">2000</p>
+    </div>
+</div>
+    <div class="image-display">
+        <img src="imagens/evento1.jpg" alt="Imagem da Amazônia" id="timelineImage" onclick="showDetails()">
+        <div class="image-details" id="imageDetails"></div>
     </div>
 </div>
 
 <script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu-bar');
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
     function toggleSidebar() {
+        document.getElementById("sidebar").classList.toggle("active");
+        document.getElementById("main-content").classList.toggle("active");
+    }
+
+    function updateTimeline() {
+        const sliderValue = document.getElementById("timelineSlider").value;
+        const timelineDisplay = document.getElementById("timelineDisplay");
+        const timelineImage = document.getElementById("timelineImage");
+
+        const events = {
+            "1": { year: "2000", image: "imagens/evento1.jpg" },
+            "2": { year: "2005", image: "imagens/evento2.jpg" },
+            "3": { year: "2010", image: "imagens/evento3.jpg" },
+            "4": { year: "2015", image: "imagens/evento4.jpg" },
+            "5": { year: "2020", image: "imagens/evento5.jpg" },
+            "6": { year: "2024", image: "imagens/evento6.jpg" }
+        };
+
+        const currentEvent = events[sliderValue];
+        timelineDisplay.innerText = Ano: ${currentEvent.year};
+        timelineImage.src = currentEvent.image;  
+
+    }function toggleSidebar() {
         document.getElementById("sidebar").classList.toggle("active");
         document.getElementById("main-content").classList.toggle("active");
     }
@@ -274,7 +306,7 @@
         document.getElementById("menu-bar").style.display = 
             document.getElementById("menu-bar").style.display === 'none' ? 'block' : 'none';
     }
+    
 </script>
-
 </body>
 </html>
