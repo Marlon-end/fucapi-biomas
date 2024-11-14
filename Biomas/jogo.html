@@ -95,8 +95,8 @@
             color: white;
         }
 
-        /* Estilo do botão de atirar para dispositivos móveis */
-        #shootButton {
+        /* Estilo dos botões */
+        #leftButton, #rightButton, #shootButton, #restartButton {
             background-color: #FFD700;
             color: #228B22;
             border: none;
@@ -104,11 +104,38 @@
             font-size: 18px;
             border-radius: 10px;
             cursor: pointer;
+            margin: 10px;
+        }
+
+        #leftButton, #rightButton {
             position: fixed;
             bottom: 20px;
-            width: 200px;
+        }
+
+        #leftButton {
+            left: 20px;
+        }
+
+        #rightButton {
+            right: 20px;
+        }
+
+        #shootButton {
+            position: fixed;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
+        }
+
+        #restartButton {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #FF6347;
+            color: white;
+            padding: 15px;
         }
     </style>
 </head>
@@ -121,7 +148,11 @@
     <div id="gameOver">GAME OVER</div>
 </div>
 
+<!-- Botões de movimentação e tiro para dispositivos móveis -->
+<button id="leftButton">Esquerda</button>
+<button id="rightButton">Direita</button>
 <button id="shootButton">Atirar Água</button>
+<button id="restartButton">Reiniciar Jogo</button>
 
 <script>
     // Variáveis iniciais
@@ -130,6 +161,9 @@
     const scoreElement = document.getElementById('score');
     const vidaElement = document.getElementById('vida');
     const gameOverElement = document.getElementById('gameOver');
+    const restartButton = document.getElementById('restartButton');
+    const leftButton = document.getElementById('leftButton');
+    const rightButton = document.getElementById('rightButton');
     const shootButton = document.getElementById('shootButton');
     const gameWidth = gameContainer.offsetWidth;
     const gameHeight = gameContainer.offsetHeight;
@@ -148,16 +182,10 @@
     let leftPressed = false;
     let rightPressed = false;
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') leftPressed = true;
-        if (e.key === 'ArrowRight') rightPressed = true;
-        if (e.key === ' ') shootWater(); // Espaço para atirar água
-    });
-
-    document.addEventListener('keyup', (e) => {
-        if (e.key === 'ArrowLeft') leftPressed = false;
-        if (e.key === 'ArrowRight') rightPressed = false;
-    });
+    // Funções de movimentação e tiro
+    leftButton.addEventListener('click', () => leftPressed = true);
+    rightButton.addEventListener('click', () => rightPressed = true);
+    shootButton.addEventListener('click', shootWater);
 
     // Função para mover o bombeiro
     function moveBombeiro() {
@@ -174,9 +202,9 @@
     function createLadrao() {
         let ladrao = document.createElement('div');
         ladrao.classList.add('ladrao');
-        ladrao.style.left = Math.random() * (gameWidth - 30) + 'px'; // Ladrão começa em posição aleatória
-        ladrao.style.top = '-30px'; // Começa fora da tela
-        ladrao.direction = Math.random() > 0.5 ? 'left' : 'right'; // Direção aleatória (esquerda ou direita)
+        ladrao.style.left = Math.random() * (gameWidth - 30) + 'px';
+        ladrao.style.top = '-30px';
+        ladrao.direction = Math.random() > 0.5 ? 'left' : 'right';
         gameContainer.appendChild(ladrao);
         ladroes.push(ladrao);
     }
@@ -187,14 +215,12 @@
             let ladraoPositionY = parseInt(ladrao.style.top) + ladraoSpeed;
             let ladraoPositionX = parseInt(ladrao.style.left);
 
-            // Ladrão vai de cima para baixo
             if (ladraoPositionY >= gameHeight - 50) {
                 gameOver();
             } else {
                 ladrao.style.top = ladraoPositionY + 'px';
             }
 
-            // Verifica a direção dos ladrões
             if (ladrao.direction === 'left') {
                 ladraoPositionX -= 2;
             } else {
@@ -233,7 +259,7 @@
     function shootWater() {
         let agua = document.createElement('div');
         agua.classList.add('agua');
-        agua.style.left = bombeiroPositionX + 20 + 'px'; // Água sai da mangueira do bombeiro
+        agua.style.left = bombeiroPositionX + 20 + 'px';
         agua.style.top = bombeiroPositionY - 20 + 'px';
         gameContainer.appendChild(agua);
         waterShots.push(agua);
@@ -259,8 +285,8 @@
     function shootFogo(ladrao) {
         let fogo = document.createElement('div');
         fogo.classList.add('fogo');
-        fogo.style.left = parseInt(ladrao.style.left) + 10 + 'px';
-        fogo.style.top = parseInt(ladrao.style.top) + 30 + 'px';
+        fogo.style.left = ladrao.offsetLeft + 10 + 'px';
+        fogo.style.top = ladrao.offsetTop + 30 + 'px';
         gameContainer.appendChild(fogo);
         fogoShots.push(fogo);
         moveFogo(fogo);
@@ -268,7 +294,7 @@
 
     // Função para mover o fogo
     function moveFogo(fogo) {
-        let fogoPositionY = parseInt(fogo.style.top) + 5;
+        let fogoPositionY = parseInt(fogo.style.top);
         const fogoInterval = setInterval(() => {
             if (fogoPositionY >= gameHeight) {
                 fogo.remove();
@@ -298,8 +324,11 @@
     // Função para exibir a tela de Game Over
     function gameOver() {
         gameOverElement.style.display = 'block';
+        restartButton.style.display = 'block';
         setTimeout(() => {
-            location.reload(); // Reinicia o jogo
+            restartButton.addEventListener('click', () => {
+                location.reload(); // Reinicia o jogo
+            });
         }, 2000);
     }
 
@@ -314,9 +343,6 @@
 
     // Iniciar o jogo
     setInterval(update, 20);
-
-    // Lidar com o clique no botão de atirar
-    shootButton.addEventListener('click', shootWater);
 </script>
 
 </body>
