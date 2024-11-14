@@ -1,4 +1,3 @@
-
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -43,9 +42,15 @@
             padding: 10px 20px;
             text-decoration: none;
             font-size: 1rem;
-            display: block;
-            width: 100%;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-bar a img {
+            margin-right: 10px;
+            width: 20px;
+            height: auto;
         }
 
         .menu-bar a:hover {
@@ -141,8 +146,15 @@
             text-decoration: none;
             font-size: 1rem;
             color: white;
-            display: block;
+            display: flex;
+            align-items: center;
             transition: 0.3s;
+        }
+
+        .sidebar a img {
+            margin-right: 10px;
+            width: 20px;
+            height: auto;
         }
 
         .sidebar a:hover {
@@ -207,10 +219,10 @@
 <header>
     <span class="menu-toggle" onclick="toggleMenu()">☰ Menu</span>
     <div class="menu-bar" id="menu-bar">
-        <a href="Biomas/projetos.html">Projetos</a>
-        <a href="Biomas/dados.html">Dados da Poluição do Ar</a>
-        <a href="Biomas/solucoes.html">Soluções</a>
-        <a href="Biomas/ecomonitor.html">Ecomonitor</a> <!-- Novo link -->
+        <a href="Biomas/projetos.html"><img src="imagens/projetos.png" alt="Projetos Icon">Projetos</a>
+        <a href="Biomas/dados.html"><img src="imagens/dados.png" alt="Dados Icon">Dados da Poluição do Ar</a>
+        <a href="Biomas/solucoes.html"><img src="imagens/solucoes.png" alt="Soluções Icon">Soluções</a>
+        <a href="Biomas/ecomonitor.html"><img src="imagens/ecomonitor.png" alt="Ecomonitor Icon">Ecomonitor</a> <!-- Novo link -->
     </div>
 </header>
 
@@ -221,10 +233,10 @@
 </section>
 
 <div class="sidebar" id="sidebar">
-    <a href="Biomas/projetos.html" onclick="toggleSidebar()">Projetos</a>
-    <a href="Biomas/dados.html" onclick="toggleSidebar()">Dados da Poluição do Ar</a>
-    <a href="Biomas/solucoes.html" onclick="toggleSidebar()">Soluções</a>
-    <a href="Biomas/ecomonitor.html" onclick="toggleSidebar()">Ecomonitor</a> <!-- Novo link -->
+    <a href="Biomas/projetos.html" onclick="toggleSidebar()"><img src="imagens/projetos.png" alt="Projetos Icon">Projetos</a>
+    <a href="Biomas/dados.html" onclick="toggleSidebar()"><img src="imagens/dados.png" alt="Dados Icon">Dados da Poluição do Ar</a>
+    <a href="Biomas/solucoes.html" onclick="toggleSidebar()"><img src="imagens/solucoes.png" alt="Soluções Icon">Soluções</a>
+    <a href="Biomas/ecomonitor.html" onclick="toggleSidebar()"><img src="imagens/ecomonitor.png" alt="Ecomonitor Icon">Ecomonitor</a> <!-- Novo link -->
 </div>
 
 <div class="main-content" id="main-content">
@@ -247,47 +259,22 @@
         <h3>Linha do Tempo da Degradação Amazônica</h3>
         <div class="timeline-slider">
             <img src="imagens/fogo.png" alt="Fogo" id="fireIcon">
-            <input type="range" id="timelineSlider" min="1" max="6" value="1" oninput="updateTimeline()">
-            <div class="timeline-bar" id="timelineBar"></div>
+            <input type="range" min="1" max="100" value="50">
         </div>
-        <div id="timelineDisplay">Ano: 2000 - Início da linha do tempo</div>
-    </div>
-
-    <div class="image-display">
-        <img src="imagens/evento1.jpg" alt="Imagem da Amazônia" id="timelineImage" onclick="showDetails()">
-        <div class="image-details" id="imageDetails"></div>
+        <p id="timeline-year">2020</p>
     </div>
 </div>
 
 <script>
-    function toggleMenu() {
-        const menu = document.getElementById('menu-bar');
-        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    }
     function toggleSidebar() {
         document.getElementById("sidebar").classList.toggle("active");
         document.getElementById("main-content").classList.toggle("active");
     }
-
-    function updateTimeline() {
-        const sliderValue = document.getElementById("timelineSlider").value;
-        const timelineDisplay = document.getElementById("timelineDisplay");
-        const timelineImage = document.getElementById("timelineImage");
-
-        const events = {
-            "1": { year: "2000", image: "imagens/evento1.jpg" },
-            "2": { year: "2005", image: "imagens/evento2.jpg" },
-            "3": { year: "2010", image: "imagens/evento3.jpg" },
-            "4": { year: "2015", image: "imagens/evento4.jpg" },
-            "5": { year: "2020", image: "imagens/evento5.jpg" },
-            "6": { year: "2024", image: "imagens/evento6.jpg" }
-        };
-
-        const currentEvent = events[sliderValue];
-        timelineDisplay.innerText = `Ano: ${currentEvent.year}`;
-        timelineImage.src = currentEvent.image;
+    function toggleMenu() {
+        document.getElementById("menu-bar").style.display = 
+            document.getElementById("menu-bar").style.display === 'none' ? 'block' : 'none';
     }
-    
 </script>
+
 </body>
 </html>
