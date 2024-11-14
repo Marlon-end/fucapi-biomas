@@ -200,11 +200,6 @@
             width: 30px;
             height: auto;
         }
-        .menu-bar a img, .sidebar a img {
-    margin-right: 10px;
-    width: 20px;
-    height: auto;
-}     
     </style>
 </head>
 <body>
@@ -212,11 +207,12 @@
 <header>
     <span class="menu-toggle" onclick="toggleMenu()">☰ Menu</span>
     <div class="menu-bar" id="menu-bar">
-    <a href="Biomas/projetos.html"><img src="imagens/logo5.png" alt="Projetos Icon">Projetos</a>
-    <a href="Biomas/dados.html"><img src="imagens/logo2.png" alt="Dados Icon">Dados da Poluição do Ar</a>
-    <a href="Biomas/solucoes.html"><img src="imagens/logo3.png" alt="Soluções Icon">Soluções</a>
-    <a href="Biomas/ecomonitor.html"><img src="imagens/logo1.png" alt="Ecomonitor Icon">Ecomonitor</a>
-</div>
+        <a href="Biomas/projetos.html">Projetos</a>
+        <a href="Biomas/dados.html">Dados da Poluição do Ar</a>
+        <a href="Biomas/solucoes.html">Soluções</a>
+        <a href="Biomas/ecomonitor.html">Ecomonitor</a>
+        <a href="Biomas/jogo.html">Jogo</a>
+    </div>
 </header>
 
 <section class="title-section">
@@ -226,12 +222,12 @@
 </section>
 
 <div class="sidebar" id="sidebar">
-    <a href="Biomas/projetos.html" onclick="toggleSidebar()"><img src="imagens/projetos.png" alt="Projetos Icon">Projetos</a>
-    <a href="Biomas/dados.html" onclick="toggleSidebar()"><img src="imagens/dados.png" alt="Dados Icon">Dados da Poluição do Ar</a>
-    <a href="Biomas/solucoes.html" onclick="toggleSidebar()"><img src="imagens/solucoes.png" alt="Soluções Icon">Soluções</a>
-    <a href="Biomas/ecomonitor.html" onclick="toggleSidebar()"><img src="imagens/ecomonitor.png" alt="Ecomonitor Icon">Ecomonitor</a>
+    <a href="Biomas/projetos.html" onclick="toggleSidebar()">Projetos</a>
+    <a href="Biomas/dados.html" onclick="toggleSidebar()">Dados da Poluição do Ar</a>
+    <a href="Biomas/solucoes.html" onclick="toggleSidebar()">Soluções</a>
+    <a href="Biomas/ecomonitor.html" onclick="toggleSidebar()">Ecomonitor</a>
+     <a href="Biomas/jogo.html" onclick="toggleSidebar()">Jogo</a>
 </div>
-
 
 <div class="main-content" id="main-content">
     <section id="introducao">
