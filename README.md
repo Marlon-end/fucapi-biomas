@@ -1,3 +1,4 @@
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -42,15 +43,9 @@
             padding: 10px 20px;
             text-decoration: none;
             font-size: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .menu-bar a img {
-            margin-right: 10px;
-            width: 20px;
-            height: auto;
+            display: block;
+            width: 100%;
+            text-align: center;
         }
 
         .menu-bar a:hover {
@@ -146,15 +141,8 @@
             text-decoration: none;
             font-size: 1rem;
             color: white;
-            display: flex;
-            align-items: center;
+            display: block;
             transition: 0.3s;
-        }
-
-        .sidebar a img {
-            margin-right: 10px;
-            width: 20px;
-            height: auto;
         }
 
         .sidebar a:hover {
@@ -219,10 +207,10 @@
 <header>
     <span class="menu-toggle" onclick="toggleMenu()">☰ Menu</span>
     <div class="menu-bar" id="menu-bar">
-        <a href="Biomas/projetos.html"><img src="imagens/logo5.png" alt="Projetos Icon">Projetos</a>
-        <a href="Biomas/dados.html"><img src="imagens/logo2.png" alt="Dados Icon">Dados da Poluição do Ar</a>
-        <a href="Biomas/solucoes.html"><img src="imagens/logo3.png" alt="Soluções Icon">Soluções</a>
-        <a href="Biomas/ecomonitor.html"><img src="imagens/logo1.png" alt="Ecomonitor Icon">Ecomonitor</a> <!-- Novo link -->
+        <a href="Biomas/projetos.html">Projetos</a>
+        <a href="Biomas/dados.html">Dados da Poluição do Ar</a>
+        <a href="Biomas/solucoes.html">Soluções</a>
+        <a href="Biomas/ecomonitor.html">Ecomonitor</a> <!-- Novo link -->
     </div>
 </header>
 
@@ -233,10 +221,10 @@
 </section>
 
 <div class="sidebar" id="sidebar">
-    <a href="Biomas/projetos.html" onclick="toggleSidebar()"><img src="imagens/logo5.png" alt="Projetos Icon">Projetos</a>
-    <a href="Biomas/dados.html" onclick="toggleSidebar()"><img src="imagens/logo2.png" alt="Dados Icon">Dados da Poluição do Ar</a>
-    <a href="Biomas/solucoes.html" onclick="toggleSidebar()"><img src="imagens/logo3.png" alt="Soluções Icon">Soluções</a>
-    <a href="Biomas/ecomonitor.html" onclick="toggleSidebar()"><img src="imagens/logo1.png" alt="Ecomonitor Icon">Ecomonitor</a> <!-- Novo link -->
+    <a href="Biomas/projetos.html" onclick="toggleSidebar()">Projetos</a>
+    <a href="Biomas/dados.html" onclick="toggleSidebar()">Dados da Poluição do Ar</a>
+    <a href="Biomas/solucoes.html" onclick="toggleSidebar()">Soluções</a>
+    <a href="Biomas/ecomonitor.html" onclick="toggleSidebar()">Ecomonitor</a> <!-- Novo link -->
 </div>
 
 <div class="main-content" id="main-content">
@@ -259,11 +247,12 @@
         <h3>Linha do Tempo da Degradação Amazônica</h3>
         <div class="timeline-slider">
             <img src="imagens/fogo.png" alt="Fogo" id="fireIcon">
-            <input type="range" min="1" max="6" value="1">
+            <input type="range" id="timelineSlider" min="1" max="6" value="1" oninput="updateTimeline()">
+            <div class="timeline-bar" id="timelineBar"></div>
         </div>
-        <p id="timeline-year">2000</p>
+        <div id="timelineDisplay">Ano: 2000 - Início da linha do tempo</div>
     </div>
-</div>
+
     <div class="image-display">
         <img src="imagens/evento1.jpg" alt="Imagem da Amazônia" id="timelineImage" onclick="showDetails()">
         <div class="image-details" id="imageDetails"></div>
@@ -296,13 +285,9 @@
 
         const currentEvent = events[sliderValue];
         timelineDisplay.innerText = Ano: ${currentEvent.year};
-        timelineImage.src = currentEvent.image;  
-
-    }function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("active");
-        document.getElementById("main-content").classList.toggle("active");
+        timelineImage.src = currentEvent.image;
     }
-   
+    
 </script>
 </body>
 </html>
