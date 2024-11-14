@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -56,7 +56,7 @@
         .title-section {
             position: relative;
             text-align: center;
-            background-image: url('imagens/feira.jpg'); /* Caminho da imagem */
+            background-image: url('imagens/feira.jpg');
             background-size: cover;
             background-position: center;
             padding: 200px 0;
@@ -182,7 +182,7 @@
             }
             .video-container {
                 width: 100%;
-                padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+                padding-bottom: 56.25%;
                 position: relative;
                 height: 0;
             }
@@ -210,7 +210,7 @@
         <a href="Biomas/projetos.html">Projetos</a>
         <a href="Biomas/dados.html">Dados da Poluição do Ar</a>
         <a href="Biomas/solucoes.html">Soluções</a>
-        <a href="Biomas/ecomonitor.html">Ecomonitor</a> <!-- Novo link -->
+        <a href="Biomas/ecomonitor.html">Ecomonitor</a>
     </div>
 </header>
 
@@ -224,16 +224,15 @@
     <a href="Biomas/projetos.html" onclick="toggleSidebar()">Projetos</a>
     <a href="Biomas/dados.html" onclick="toggleSidebar()">Dados da Poluição do Ar</a>
     <a href="Biomas/solucoes.html" onclick="toggleSidebar()">Soluções</a>
-    <a href="Biomas/ecomonitor.html" onclick="toggleSidebar()">Ecomonitor</a> <!-- Novo link -->
+    <a href="Biomas/ecomonitor.html" onclick="toggleSidebar()">Ecomonitor</a>
 </div>
 
 <div class="main-content" id="main-content">
     <section id="introducao">
         <h2>Bem-vindo ao site Biomas da Amazônia</h2>
-        <p>Recentemente secas históricas acontecem com mais frequência, nos últimos anos, as principais hidrovias da amazônia secam muito além dos previsto, pesquisas apontam, o desmatamento, a agropecuária e a poluição do ar como principais causadores destes fenômenos climáticos, O reflorestamento surge como uma ação necessária para garantir a conservação da biodiversidade e equilibrar as mudanças climáticas. No entanto, ainda se faz necessários que outras atividades como o monitoramento, prevenção, incentivo e desenvolvimento de atividade que desenvolvam a bioeconomia, sejam criados e que principalmente trabalhem em conjunto, para recuperar uma área devastada, sem fazer com que se torne improdutiva, em casos como o da agropecuária.</p>
+        <p>Recentemente secas históricas acontecem com mais frequência...</p>
     </section>
 
-    <!-- Vídeo Responsivo -->
     <figure class="video-container">
         <iframe src="https://www.youtube.com/embed/4MJvepYiBVk" 
                 title="YouTube video player" frameborder="0" 
@@ -242,7 +241,6 @@
     </figure>
     <figcaption>Fig. 1 - Vídeo representando os temas de preservação e monitoramento dos biomas amazônicos.</figcaption>
 
-    <!-- Linha do Tempo -->
     <div class="timeline">
         <h3>Linha do Tempo da Degradação Amazônica</h3>
         <div class="timeline-slider">
@@ -262,8 +260,14 @@
 <script>
     function toggleMenu() {
         const menu = document.getElementById('menu-bar');
-        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        menu.classList.toggle('active');
+        if (menu.style.display === 'flex') {
+            menu.style.display = 'none';
+        } else {
+            menu.style.display = 'flex';
+        }
     }
+
     function toggleSidebar() {
         document.getElementById("sidebar").classList.toggle("active");
         document.getElementById("main-content").classList.toggle("active");
@@ -272,22 +276,24 @@
     function updateTimeline() {
         const sliderValue = document.getElementById("timelineSlider").value;
         const timelineDisplay = document.getElementById("timelineDisplay");
+        const fireIcon = document.getElementById("fireIcon");
         const timelineImage = document.getElementById("timelineImage");
 
-        const events = {
-            "1": { year: "2000", image: "imagens/evento1.jpg" },
-            "2": { year: "2005", image: "imagens/evento2.jpg" },
-            "3": { year: "2010", image: "imagens/evento3.jpg" },
-            "4": { year: "2015", image: "imagens/evento4.jpg" },
-            "5": { year: "2020", image: "imagens/evento5.jpg" },
-            "6": { year: "2024", image: "imagens/evento6.jpg" }
-        };
+        const events = [
+            { year: 2000, description: "Início da linha do tempo" },
+            { year: 2005, description: "Alta da poluição do ar" },
+            { year: 2010, description: "Secas históricas e perda de biodiversidade" },
+            { year: 2015, description: "Aumento de incêndios" },
+            { year: 2020, description: "Risco de desertificação" },
+            { year: 2025, description: "Situação crítica de extinção" },
+        ];
 
-        const currentEvent = events[sliderValue];
-        timelineDisplay.innerText = Ano: ${currentEvent.year};
-        timelineImage.src = currentEvent.image;
+        const currentEvent = events[sliderValue - 1];
+        timelineDisplay.innerText = `Ano: ${currentEvent.year} - ${currentEvent.description}`;
+
+        fireIcon.src = `imagens/fogo${sliderValue}.png`;
+        timelineImage.src = `imagens/evento${sliderValue}.jpg`;
     }
-    
 </script>
 </body>
 </html>
