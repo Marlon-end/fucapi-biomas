@@ -219,10 +219,10 @@
 <header>
     <span class="menu-toggle" onclick="toggleMenu()">☰ Menu</span>
     <div class="menu-bar" id="menu-bar">
-        <a href="Biomas/projetos.html"><img src="imagens/projetos.png" alt="Projetos Icon">Projetos</a>
-        <a href="Biomas/dados.html"><img src="imagens/dados.png" alt="Dados Icon">Dados da Poluição do Ar</a>
-        <a href="Biomas/solucoes.html"><img src="imagens/solucoes.png" alt="Soluções Icon">Soluções</a>
-        <a href="Biomas/ecomonitor.html"><img src="imagens/ecomonitor.png" alt="Ecomonitor Icon">Ecomonitor</a> <!-- Novo link -->
+        <a href="Biomas/projetos.html"><img src="imagens/logo5.png" alt="Projetos Icon">Projetos</a>
+        <a href="Biomas/dados.html"><img src="imagens/logo2.png" alt="Dados Icon">Dados da Poluição do Ar</a>
+        <a href="Biomas/solucoes.html"><img src="imagens/logo3.png" alt="Soluções Icon">Soluções</a>
+        <a href="Biomas/ecomonitor.html"><img src="imagens/logo1.png" alt="Ecomonitor Icon">Ecomonitor</a> <!-- Novo link -->
     </div>
 </header>
 
